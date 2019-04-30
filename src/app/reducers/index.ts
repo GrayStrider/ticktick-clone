@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { RootState } from './state';
 import { todoReducer } from './todos';
-import ticktickReducer from '../pages/Ticktick/mockDataReducer'
+import ticktickReducer from '../pages/Ticktick/mockDataReducer';
+import typedReducer from 'app/pages/Ticktick/typedReducer';
 
 export { RootState };
 
@@ -9,5 +10,6 @@ export { RootState };
 // doesn't go well with redux@4
 export const rootReducer = combineReducers<RootState>({
   todos: todoReducer as any,
-  ticktick: ticktickReducer as any
-});
+  ticktick: ticktickReducer as any,
+  typedTickTick: typedReducer as any
+})
