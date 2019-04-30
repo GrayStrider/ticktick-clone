@@ -1,14 +1,22 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.span`
+/**
+ * @param priority Priority!
+ * **/
+export interface IWrapper {
+  priority: 0 | 1 | 2 | 3;
+  completed: boolean;
+}
+
+
+export const Wrapper = styled.span<IWrapper>`
     display: flex;
     align-items: center;
     .checkbox {
     margin-right: 0.8em;
     
     & *:before {
-    // @ts-ignore
-    border: 1px solid ${props => ['gray', 'lightblue', 'yellow', 'red'][props.completed ? 0 : props.priority]} !important;
+    border: 1px solid ${props => ['gray', 'lightblue', 'yellow', 'red'][props.completed ? 3 : props.priority]} !important;
     
     border-radius: 2px !important;
     background-color: black !important;

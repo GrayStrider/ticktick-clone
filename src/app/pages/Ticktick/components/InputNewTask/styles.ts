@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.span`
+export const Wrapper = styled.span<{
+  buttonBarActive: boolean
+}>`
   padding: 0.5em 1em 0.5em 1em;
   
   .input input {
@@ -8,7 +10,6 @@ export const Wrapper = styled.span`
     color: white !important;
     border: 1px solid gray;
     border-radius: 1px;
-    // @ts-ignore
     padding: 0.5em ${props => props.buttonBarActive ? '7em' : '0.5em'} 0.5em 0.5em ;
     &::placeholder {
       color: #ffffff;

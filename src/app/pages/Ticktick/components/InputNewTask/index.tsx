@@ -10,6 +10,7 @@ import { addTask } from './actions';
 
 function InputNewTask(props) {
   const placeholder = `Add new task in ${props.selectedList.name}`;
+  // @ts-ignore
   InputNewTask.handleClickOutside = () => toggleButtonBar(false);
 
   const [buttonBarActive, toggleButtonBar] = React.useState(false);
@@ -80,6 +81,7 @@ const mapDispatchToProps = dispatch => ({
   addTask: (params) => dispatch(addTask(params)),
 });
 
+// @ts-ignore
 const clickOutsideConfig = { handleClickOutside: () => InputNewTask.handleClickOutside };
 export default connect(mapStateToProps, mapDispatchToProps)
 (onClickOutside(InputNewTask, clickOutsideConfig));

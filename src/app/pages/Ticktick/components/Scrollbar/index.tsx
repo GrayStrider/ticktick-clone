@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Scrollbars } from 'react-custom-scrollbars';
+import Scrollbars from 'react-custom-scrollbars';
 
 // TODO Don't hide track while mouse inside the container
 // https://github.com/malte-wessel/react-custom-scrollbars/blob/master/src/Scrollbars/index.js
@@ -7,7 +7,13 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 // https://github.com/malte-wessel/react-custom-scrollbars/blob/master/docs/API.md
 
-export default class Scrollbar extends React.Component {
+type Props = {
+  children: React.ReactNode
+  style: object
+  autoHide: boolean
+}
+
+export default class Scrollbar extends React.Component<Props> {
 
   constructor(props, ...rest) {
     super(props, ...rest);

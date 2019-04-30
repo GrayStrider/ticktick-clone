@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const InputButtonBar = styled.span`
-  // @ts-ignore
+export const InputButtonBar = styled.span<{
+  active: boolean;
+}>`
   display: ${props => props.active ? 'flex' : 'none'};
   position: relative;
   float: right;

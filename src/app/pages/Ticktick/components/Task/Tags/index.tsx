@@ -5,7 +5,12 @@ import { map, pickBy, truncate, keys, pick } from 'lodash';
 import { Label } from 'semantic-ui-react';
 import { Wrapper } from './styles';
 
-function Tags(props) {
+interface ITags {
+  taskID?: string;
+  taskTags?: any;
+}
+
+function Tags(props: ITags) {
   const { taskTags } = props;
   return (
     <Wrapper>

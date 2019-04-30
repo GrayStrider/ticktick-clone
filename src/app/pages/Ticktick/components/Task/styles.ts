@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{
+  taskIsSelected: boolean;
+}>`
   padding: 0.5em 1em 0.5em 1em;
   display: flex;
   flex-direction: row;
@@ -13,7 +15,6 @@ export const Wrapper = styled.div`
       outline: none;
     }
   }
-  // @ts-ignore  
   background-color: ${props => props.taskIsSelected ? '#1F1F1F' : 'none'};
 
   

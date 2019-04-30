@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import * as PropTypes from 'prop-types';
 import { Checkbox as CheckboxSemantic } from 'semantic-ui-react';
-import { Wrapper } from './styles';
+import { IWrapper, Wrapper } from './styles';
 import { toggleDone } from '../Task/actions';
 
 function Checkbox(props) {
@@ -10,6 +10,7 @@ function Checkbox(props) {
     <Wrapper
       completed={props.completed}
       priority={props.priority}>
+
       <CheckboxSemantic
         checked={props.completed}
         onClick={() => props.toggleDone(props.taskID)}

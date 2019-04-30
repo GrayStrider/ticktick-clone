@@ -16,7 +16,7 @@ function Task(props) {
     modifyTaskAction,
   } = props;
 
-  const inputRef = React.createRef();
+  const inputRef = React.createRef<HTMLInputElement>();
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
