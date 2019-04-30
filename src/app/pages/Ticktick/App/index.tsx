@@ -49,7 +49,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // setCounter: (value) => dispatch(setCounter(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TickTick);

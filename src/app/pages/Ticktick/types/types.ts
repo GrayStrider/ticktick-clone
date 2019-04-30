@@ -1,4 +1,5 @@
 // -- Tasks
+
 export type TTaskID = string
 export type TTasks = { [ID: string]: ITask }
 export interface ITask {
@@ -37,4 +38,10 @@ export interface IList {
   readonly id: TListID
   name: string
   readonly type: 'list'
+}
+
+export enum menuCategories {
+  lists,
+  tags,
+  custom
 }

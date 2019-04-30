@@ -1,5 +1,5 @@
 import { Chance } from 'chance';
-import { EPriorities, TLists, TTags, TTasks } from 'app/pages/Ticktick/Models/Task';
+import { EPriorities, TLists, TTags, TTasks } from 'app/pages/Ticktick/types/types';
 
 const MOCK_TASKS_AMOUNT = 500;
 const chance = new Chance(Math.random);

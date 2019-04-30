@@ -9,14 +9,10 @@ import { menuCategories } from '../../mockDataReducer';
 import messages from './messages';
 
 function Lists(props) {
-  const {
-    selectedTab,
-    selectedList,
-    insertableLists,
-    selectTabAction,
-    selectListAction
-  } = props;
+  const { selectedTab, selectedList, insertableLists,
+    selectTabAction, selectListAction } = props;
   const Tabs =
+
     <Menu pointing secondary inverted>
       {
         menuCategories.map((key) => (
