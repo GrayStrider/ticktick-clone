@@ -1,8 +1,10 @@
+import { ETabs } from 'app/pages/Ticktick/types/types';
+
 export const SELECT_TAB = 'SELECT_TAB';
 export const SELECT_LIST = 'SELECT_LIST';
 
 
-export function selectTab(payload) {
+export function selectTab(payload: ETabs) {
   return {
     type: SELECT_TAB,
     payload,

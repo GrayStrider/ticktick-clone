@@ -1,6 +1,6 @@
 const messages = {
-  groups: 'Groups',
-  tags: 'TTags',
+  lists: 'Groups',
+  tags: 'Tags',
   custom: 'Custom'
 }
 
