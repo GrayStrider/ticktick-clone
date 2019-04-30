@@ -1,5 +1,7 @@
 /** Global definitions for development **/
 
+declare module '*'; //TODO temporary solution for js import errors
+
 // for style loader
 declare module '*.css' {
   const styles: any;
