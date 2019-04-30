@@ -6,47 +6,46 @@ import { map } from 'lodash';
 import { Wrapper } from './styles';
 import { selectList, selectTab } from './actions';
 import messages from './messages';
-import { tabs } from 'app/pages/Ticktick/types/types';
+import { ICustomList, IList, ITag, tabs } from 'app/pages/Ticktick/types/types';
 
 function Lists(props) {
-  const { selectedTab, selectedList, lists,
-    selectTabAction, selectListAction } = props;
+  const {
+    selectedTab, selectedList, lists,
+    selectTabAction, selectListAction
+  } = props;
   const Tabs =
 
-    <Menu pointing secondary inverted>
-      {
-        tabs.map((key) => (
-          <Menu.Item
-            key={key}
-            active={key === selectedTab}
-            onClick={() => selectTabAction(key)}>
+    <Menu pointing secondary inverted> {
+      tabs.map((key) => (
+        <Menu.Item
+          key={key}
+          active={key === selectedTab}
+          onClick={() => selectTabAction(key)}>
 
-            {messages[key]}
-          </Menu.Item>
-        ))
-      }
+          {messages[key]}
+        </Menu.Item>
+      ))}</Menu>;
+  const tabMenuLists =
+    <Menu vertical inverted fluid>
+      {map(lists[selectedTab], (list: ITag | IList | ICustomList) => (
+        <Menu.Item
+          key={list.id}
+          active={list.id === selectedList.id}
+          onClick={() => selectListAction({
+            type: list.type,
+            name: list.name,
+            listID: list.id
+          })}
+        >
+          <span><Icon name='list'/>{lists[selectedTab][list.id].name}</span>
+        </Menu.Item>
+      ))}
     </Menu>;
-  // const tabMenuLists =
-  //   <Menu vertical inverted fluid>
-  //     {map(lists[selectedTab], (list) => (
-  //       <Menu.Item
-  //         key={list.listID}
-  //         active={list.listID === selectedList.listID}
-  //         onClick={() => selectListAction({
-  //           type: list.type,
-  //           name: list.name,
-  //           listID: list.listID
-  //         })}
-  //       >
-  //         <span><Icon name='list'/>{lists[selectedTab][list.listID].name}</span>
-  //       </Menu.Item>
-  //     ))}
-  //   </Menu>;
   return (
     <Wrapper>
       {Tabs}
       <Grid.Row className='lists_and_filters'>
-        {/*{tabMenuLists}*/}
+        {tabMenuLists}
       </Grid.Row>
 
     </Wrapper>
