@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Wrapper = styled.div`
   width: 100%;
   background-color: black;
@@ -48,7 +49,6 @@ export const Wrapper = styled.div`
     .column {
       &.left {
         position: fixed !important;
-        left: ${props => props.menuOpened ? 0 : '-40%'};
         width: 40% !important;
 
       }
@@ -67,7 +67,6 @@ export const Wrapper = styled.div`
     .column {
       &.left {
         width: 60% !important;
-        left: ${props => props.menuOpened ? 0 : '-60%'};
 
       }
       
