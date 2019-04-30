@@ -11,15 +11,16 @@ export interface ITask {
   completed: boolean
   list: TListID
   readonly timeCreated: number
+  // time in seconds
   timeLastModified: number
 }
 
 // -- Priorities
 export enum EPriorities {
-  High = 'HIGH',
-  Medium = 'MEDIUM',
-  Low = 'LOW',
-  None = 'NONE'
+  High = 3,
+  Medium = 2,
+  Low = 1,
+  None = 0
 }
 
 // -- Tags

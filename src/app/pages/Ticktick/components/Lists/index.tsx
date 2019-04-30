@@ -1,12 +1,12 @@
 import *  as React from 'react';
 import { connect } from 'react-redux';
-import * as PropTypes from 'prop-types';
 import { Grid, Icon, Menu } from 'semantic-ui-react';
 import { map } from 'lodash';
 import { Wrapper } from './styles';
 import { selectList, selectTab } from './actions';
 import messages from './messages';
 import { ICustomList, IList, ITag, tabs } from 'app/pages/Ticktick/types/types';
+import { RootState } from 'app/reducers';
 
 function Lists(props) {
   const {
@@ -52,16 +52,7 @@ function Lists(props) {
   );
 }
 
-Lists.propTypes = {
-  selectedTab: PropTypes.string,
-  selectedList: PropTypes.object,
-  lists: PropTypes.object,
-
-  selectTabAction: PropTypes.func,
-  selectListAction: PropTypes.func
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: RootState) => ({
   selectedTab: state.typedTickTick.ui.selectedTab,
   selectedList: state.ticktick.lists.selectedList,
   insertableLists: state.ticktick.insertableLists,

@@ -1,4 +1,5 @@
-import { ETabs, TCustomLists, TLists, TTags, TTasks } from 'app/pages/Ticktick/types/types';
+import { ETabs, TCustomLists, TListID, TLists, TTags, TTaskID, TTasks } from 'app/pages/Ticktick/types/types';
+
 
 export interface GlobalState {
   data: {
@@ -9,8 +10,9 @@ export interface GlobalState {
   },
 
   ui: {
-    selectedList: any
+    selectedList: TListID
     selectedTab: ETabs
+    selectedTask: TTaskID | null
   },
 
   defaultLists: {
