@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import * as React from 'react';
 import { Grid, Icon, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { Wrapper } from './styles';
 import Lists from '../components/Lists';
 import TaskList from '../components/TaskList';
@@ -23,18 +23,18 @@ function TickTick(props) {
             <Icon name='mail'/>
           </Grid.Row>
 
-          <Lists/>
+          {/*<Lists/>*/}
 
         </Grid.Column>
 
         <Grid.Column className='center'>
-          <TaskListHeader/>
-          <InputNewTask/>
-          <TaskList/>
+          {/*<TaskListHeader/>*/}
+          {/*<InputNewTask/>*/}
+          {/*<TaskList/>*/}
         </Grid.Column>
 
         <Grid.Column className='right'>
-          <TaskDetails/>
+          {/*<TaskDetails/>*/}
         </Grid.Column>
 
       </Grid>
