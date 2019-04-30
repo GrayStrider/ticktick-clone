@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { RootState } from './state';
 import { todoReducer } from './todos';
-import ticktickReducer from '../pages/Ticktick/mockDataReducer.js'
+import ticktickReducer from '../pages/Ticktick/mockDataReducer'
 
 export { RootState };
 

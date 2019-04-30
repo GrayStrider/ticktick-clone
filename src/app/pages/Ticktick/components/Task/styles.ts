@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
       outline: none;
     }
   }
+  // @ts-ignore  
   background-color: ${props => props.taskIsSelected ? '#1F1F1F' : 'none'};
 
   

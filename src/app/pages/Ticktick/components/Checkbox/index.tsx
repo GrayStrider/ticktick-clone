@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { Checkbox as CheckboxSemantic } from 'semantic-ui-react';
 import { Wrapper } from './styles';
 import { toggleDone } from '../Task/actions';

@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { map, pickBy, keys, difference } from 'lodash';
 import { Dropdown } from 'semantic-ui-react';
 import { Wrapper } from './styles';
@@ -68,6 +68,7 @@ function Tags(props) {
         search
         selection
         value={taskTags}
+        // @ts-ignore
         onChange={handleChange}
         renderLabel={renderLabel}
       />

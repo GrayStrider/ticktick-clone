@@ -7,6 +7,7 @@ export const Wrapper = styled.span`
     margin-right: 0.8em;
     
     & *:before {
+    // @ts-ignore
     border: 1px solid ${props => ['gray', 'lightblue', 'yellow', 'red'][props.completed ? 0 : props.priority]} !important;
     
     border-radius: 2px !important;

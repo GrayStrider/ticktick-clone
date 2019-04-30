@@ -77,6 +77,7 @@ const globalReducer = (state = initialState, action) =>
           [action.payload.selectedList.type]
           [action.payload.selectedList.listID].tasks
           .push(guid);
+        // @ts-ignore
         draft.tasksList.selectedTaskID = guid;
         break;
       }

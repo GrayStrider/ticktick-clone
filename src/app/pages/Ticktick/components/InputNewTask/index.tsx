@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { Icon, Input, Popup } from 'semantic-ui-react';
 import onClickOutside from 'react-onclickoutside';
 import { Wrapper } from './styles';
@@ -12,8 +12,8 @@ function InputNewTask(props) {
   const placeholder = `Add new task in ${props.selectedList.name}`;
   InputNewTask.handleClickOutside = () => toggleButtonBar(false);
 
-  const [buttonBarActive, toggleButtonBar] = useState(false);
-  const [inputValue, changeInputValue] = useState('');
+  const [buttonBarActive, toggleButtonBar] = React.useState(false);
+  const [inputValue, changeInputValue] = React.useState('');
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {

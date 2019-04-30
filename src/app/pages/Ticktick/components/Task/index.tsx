@@ -1,6 +1,6 @@
-import React, { useState, createRef } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { Wrapper } from './styles';
 import { selectTask } from './actions';
 import Checkbox from '../Checkbox';
@@ -16,11 +16,12 @@ function Task(props) {
     modifyTaskAction,
   } = props;
 
-  const inputRef = createRef();
+  const inputRef = React.createRef();
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
+      // @ts-ignore
       inputRef.current.blur();
     }
   };

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 // TODO Don't hide track while mouse inside the container
@@ -7,7 +7,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 // https://github.com/malte-wessel/react-custom-scrollbars/blob/master/docs/API.md
 
-export default class Scrollbar extends Component {
+export default class Scrollbar extends React.Component {
 
   constructor(props, ...rest) {
     super(props, ...rest);

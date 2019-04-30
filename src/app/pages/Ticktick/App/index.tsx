@@ -23,7 +23,7 @@ function TickTick(props) {
             <Icon name='mail'/>
           </Grid.Row>
 
-          {/*<Lists/>*/}
+          <Lists/>
 
         </Grid.Column>
 

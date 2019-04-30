@@ -8,6 +8,7 @@ export const Wrapper = styled.span`
     color: white !important;
     border: 1px solid gray;
     border-radius: 1px;
+    // @ts-ignore
     padding: 0.5em ${props => props.buttonBarActive ? '7em' : '0.5em'} 0.5em 0.5em ;
     &::placeholder {
       color: #ffffff;
