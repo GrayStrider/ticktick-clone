@@ -1,21 +1,34 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as PropTypes from 'prop-types';
-import { map, pickBy, keys, difference } from 'lodash';
+
+import { difference, keys, map, pickBy } from 'lodash';
 import { Dropdown } from 'semantic-ui-react';
 import { Wrapper } from './styles';
 import { addTaskToList, deleteTaskFromList } from '../../actions';
 import { selectList, selectTab } from '../../Lists/actions';
+import { ETabs, TTags, TTaskID } from 'app/pages/Ticktick/types/types';
+import { RootState } from 'app/reducers';
 
-function Tags(props) {
-  const { tags, taskID, deleteTaskFromListAction, addTaskToListAction, selectListAction, selectTabAction } = props;
+type Props = {
+  taskID: TTaskID
+  tags: TTags
+  addTaskToList: typeof addTaskToList
+  deleteTaskFromList: typeof deleteTaskFromList
+  selectList: typeof selectList
+}
 
+type OwnProps = {
+  taskID: TTaskID
+}
+
+const Tags: React.FC<any> = (props: Props) => {
+  const { tags, selectList, deleteTaskFromList, addTaskToList, taskID } = props;
   const allTags = map(
     tags, (tag) => (
       {
-        key: tag.listID,
+        key: tag.id,
         text: tag.name,
-        value: tag.listID,
+        value: tag.id
       }
     ));
 
@@ -23,38 +36,38 @@ function Tags(props) {
     pickBy(
       tags, (tag) =>
         tag.tasks.includes(
-          taskID,
+          taskID
         )));
 
   const handleChange = (e, { value }) =>
     taskTags.length < value.length
 
-      ? addTaskToListAction(
+      ? addTaskToList(
       {
         taskID: taskID,
-        type: 'tags',
-        listID: difference(value, taskTags),
-      },
+        type: ETabs.tags,
+        listID: difference(value, taskTags)[0]
+      }
       )
 
-      : deleteTaskFromListAction(
+      : deleteTaskFromList(
       {
         taskID: taskID,
         type: 'tags',
-        listID: difference(taskTags, value),
-      },
+        listID: difference(taskTags, value)
+      }
       );
   const renderLabel = label => ({
     color: 'blue',
     content: `#${label.text}`,
     onClick: () => {
-      selectTabAction('tags');
-      selectListAction({
-        type: 'tags',
+      selectTab(ETabs.tags);
+      selectList({
+        type: ETabs.tags,
         name: label.text,
-        listID: label.value
+        id: label.value
       });
-    },
+    }
   });
 
   return (
@@ -76,29 +89,31 @@ function Tags(props) {
   );
 }
 
-Tags.propTypes = {
-  tags: PropTypes.object,
-  deleteTaskFromListAction: PropTypes.func,
-  addTaskToListAction: PropTypes.func,
-  selectListAction: PropTypes.func,
-  selectTabAction: PropTypes.func,
-  taskID: PropTypes.string,
-};
+interface StateFromProps {
+  taskTags: TTags
+}
 
-const mapStateToProps = (state, ownProps) => ({
+interface DispatchFromProps {
+  deleteTaskFromList: typeof deleteTaskFromList
+  addTaskToList: typeof addTaskToList
+  selectList: typeof selectList
+  selectTab: typeof selectTab
+}
+
+const mapStateToProps = (state: RootState, ownProps: OwnProps) => ({
   taskTags: pickBy(
     state.ticktick.data.tags,
     (tag) => tag.tasks.includes(
-      ownProps.taskID,
+      ownProps.taskID
     )),
-  tags: state.ticktick.data.tags,
+  tags: state.ticktick.data.tags
 });
 
 const mapDispatchToProps = dispatch => ({
-  deleteTaskFromListAction: (payload) => dispatch(deleteTaskFromList(payload)),
-  addTaskToListAction: (payload) => dispatch(addTaskToList(payload)),
-  selectListAction: (payload) => dispatch(selectList(payload)),
-  selectTabAction: (payload) => dispatch(selectTab(payload)),
+  deleteTaskFromList: (payload) => dispatch(deleteTaskFromList(payload)),
+  addTaskToList: (payload) => dispatch(addTaskToList(payload)),
+  selectList: (payload) => dispatch(selectList(payload)),
+  selectTab: (payload) => dispatch(selectTab(payload))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Tags);
+export default connect<StateFromProps, DispatchFromProps>(mapStateToProps, mapDispatchToProps)(Tags);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as PropTypes from 'prop-types';
+
 import { map, pickBy, truncate, keys, pick } from 'lodash';
 import { Label } from 'semantic-ui-react';
 import { Wrapper } from './styles';
@@ -33,7 +33,7 @@ function Tags(props: ITags) {
 }
 
 Tags.propTypes = {
-  taskTags: PropTypes.object,
+
 };
 
 const mapStateToProps = (state, ownProps) => ({

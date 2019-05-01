@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as PropTypes from 'prop-types';
+
 import { Dropdown, Header, Icon } from 'semantic-ui-react';
 import { sortListAction } from './actions';
 import { Wrapper } from './styles';
@@ -49,8 +49,8 @@ function TaskListHeader(props) {
 }
 
 TaskListHeader.propTypes = {
-  selectedList: PropTypes.object,
-  sortList: PropTypes.func
+
+
 };
 
 const mapStateToProps = (state, ownProps) => ({

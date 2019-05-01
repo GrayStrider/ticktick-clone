@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as PropTypes from 'prop-types';
+
 import { Icon, Input, Popup } from 'semantic-ui-react';
 import onClickOutside from 'react-onclickoutside';
 import { Wrapper } from './styles';
@@ -69,8 +69,8 @@ function InputNewTask(props) {
 }
 
 InputNewTask.propTypes = {
-  selectedList: PropTypes.object,
-  addTask: PropTypes.func,
+
+
 };
 
 const mapStateToProps = state => ({

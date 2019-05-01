@@ -1,11 +1,17 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as PropTypes from 'prop-types';
 import { Form, TextArea } from 'semantic-ui-react';
 import { Wrapper } from './styles';
 import Checkbox from '../Checkbox';
 import Tags from './Tags'
-function TaskDetails(props) {
+import { TTaskID, TTasks } from 'app/pages/Ticktick/types/types';
+
+type Props = {
+  selectedTaskID: TTaskID,
+  tasks: TTasks
+}
+
+const TaskDetails: React.FC<any> = (props: Props) => {
   const { selectedTaskID, tasks } = props;
 
   return (
@@ -13,8 +19,8 @@ function TaskDetails(props) {
       {selectedTaskID ?
         <div>
           <span>
-            <Checkbox taskID= {selectedTaskID}/>
-            {tasks[selectedTaskID].taskContent}
+            <Checkbox taskID={selectedTaskID}/>
+            {tasks[selectedTaskID].title}
           </span>
           <hr/>
           Description: {tasks[selectedTaskID].description}
@@ -34,13 +40,8 @@ function TaskDetails(props) {
   );
 }
 
-TaskDetails.propTypes = {
-  selectedTaskID: PropTypes.string,
-  tasks: PropTypes.object,
-};
-
 const mapStateToProps = state => ({
-  tasks: state.ticktick.tasks,
+  tasks: state.ticktick.data.tasks,
   selectedTaskID: state.ticktick.ui.selectedTask
 });
 

@@ -1,8 +1,13 @@
-import { ETabs, IList} from 'app/pages/Ticktick/types/types';
+import { ETabs, TListID } from 'app/pages/Ticktick/types/types';
 
 export const SELECT_TAB = 'SELECT_TAB';
 export const SELECT_LIST = 'SELECT_LIST';
 
+type Lists = {
+  readonly id: TListID
+  name: string
+  readonly type: ETabs
+}
 
 export function selectTab(payload: ETabs) {
   return {
@@ -11,7 +16,7 @@ export function selectTab(payload: ETabs) {
   };
 }
 
-export function selectList(payload: IList) {
+export function selectList(payload: Lists) {
   return {
     type: SELECT_LIST,
     payload,
