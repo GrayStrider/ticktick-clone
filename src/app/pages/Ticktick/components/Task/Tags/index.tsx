@@ -10,12 +10,11 @@ interface OwnProps {
   taskID: TTaskID;
 }
 
-interface State {
+interface StateProps {
   taskTags: TTags;
 }
 
-const Tags: React.FC<any> = (props: OwnProps & State) => {
-  const { taskTags } = props;
+function Tags ({ taskTags }: OwnProps & StateProps){
   return (
     <Wrapper>
       {
@@ -47,4 +46,4 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect<any>(mapStateToProps, mapDispatchToProps)(Tags);
+export default connect(mapStateToProps, mapDispatchToProps)(Tags);
