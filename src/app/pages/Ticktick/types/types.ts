@@ -29,7 +29,7 @@ export type TTags = { [ID: string]: ITag }
 export interface ITag {
   readonly id: TTagID
   name: string
-  readonly type: 'tags'
+  readonly type: ETabs.tags
   tasks: TTaskID[]
 }
 
@@ -40,7 +40,7 @@ export type TLists = { [ID: string]: IList }
 export interface IList {
   readonly id: TListID
   name: string
-  readonly type: 'lists',
+  readonly type: ETabs.lists,
   tasks: TTaskID[]
 
 }
@@ -52,11 +52,11 @@ export type TCustomLists = { [ID: string]: ICustomList }
 export interface ICustomList {
   readonly id: TCustomListID
   name: string
-  readonly type: 'custom'
+  readonly type: ETabs.custom
 }
 
 // tabs
-export const tabs = ['lists', 'tags', 'custom'];
+// export const tabs = ['lists', 'tags', 'custom'];
 export enum ETabs {
   lists = 'lists',
   tags = 'tags',

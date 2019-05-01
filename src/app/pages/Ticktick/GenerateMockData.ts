@@ -1,5 +1,5 @@
 import { Chance } from 'chance';
-import { EPriorities, TLists, TTags, TTasks } from 'app/pages/Ticktick/types/types';
+import { EPriorities, ETabs, TLists, TTags, TTasks } from 'app/pages/Ticktick/types/types';
 
 const MOCK_TASKS_AMOUNT = 500;
 const chance = new Chance(Math.random);
@@ -33,7 +33,7 @@ export default function generateMockData(
     tags[guid] = {
       id: guid,
       name: chance.word({ length: chance.integer({ min: 3, max: 10 }) }),
-      type: 'tags',
+      type: ETabs.tags,
       tasks: chance.pickset(Object.keys(tasks), chance.integer({
         min: MOCK_TASKS_AMOUNT / 10,
         max: MOCK_TASKS_AMOUNT / 5
@@ -47,7 +47,7 @@ export default function generateMockData(
     lists[guid] = {
       id: guid,
       name: chance.capitalize(chance.word({ length: chance.integer({ min: 3, max: 10 }) })),
-      type: 'lists',
+      type: ETabs.lists,
       tasks: randomTasksToDistribute.splice(0, chance.integer({ min: 20, max: MOCK_TASKS_AMOUNT / 6 }))
     };
   }

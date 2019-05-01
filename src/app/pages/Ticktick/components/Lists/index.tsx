@@ -5,22 +5,21 @@ import { map } from 'lodash';
 import { Wrapper } from './styles';
 import { selectList, selectTab } from './actions';
 import messages from './messages';
-import { ICustomList, IList, ITag, tabs } from 'app/pages/Ticktick/types/types';
+import { ETabs, ICustomList, IList, ITag } from 'app/pages/Ticktick/types/types';
 import { RootState } from 'app/reducers';
 
 function Lists(props) {
   const {
-    selectedTab, selectedList, lists,
-    selectTabAction, selectListAction
+    selectedTab, selectedList, lists, selectListAction
   } = props;
   const Tabs =
 
     <Menu pointing secondary inverted> {
-      tabs.map((key) => (
+      map(ETabs,(key) => (
         <Menu.Item
           key={key}
           active={key === selectedTab}
-          onClick={() => selectTabAction(key)}>
+          onClick={() => props.selectTabAction(key)}>
 
           {messages[key]}
         </Menu.Item>
@@ -64,7 +63,7 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  selectTabAction: (index) => dispatch(selectTab(index)),
+  selectTabAction: (payload: ETabs) => dispatch(selectTab(payload)),
   selectListAction: (index) => dispatch(selectList(index))
 });
 

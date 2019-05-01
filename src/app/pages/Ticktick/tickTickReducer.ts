@@ -9,6 +9,7 @@ import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/pages/
 import { SELECT_TASK, TOGGLE_DONE } from 'app/pages/Ticktick/components/Task/actions';
 import { SORT_LIST } from 'app/pages/Ticktick/components/TaskList/TaskListHeader/actions';
 import { without } from 'lodash';
+
 const chance = new Chance(Math.random);
 
 
@@ -19,7 +20,7 @@ const custom: TCustomLists = {
   1: {
     id: '1',
     name: 'Custom',
-    type: 'custom'
+    type: ETabs.custom
   }
 };
 
@@ -50,7 +51,7 @@ export const initialState: GlobalState = {
     selectedList: {
       id: '1',
       name: 'Custom',
-      type: 'custom'
+      type: ETabs.custom
 
     },
     selectedTab: ETabs.custom,
