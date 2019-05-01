@@ -83,7 +83,7 @@ const tickTickReducer = (state = initialState, action): GlobalState =>
         // insert new task into currently selected list
         draft.data
           [action.payload.selectedList.type]
-          [action.payload.selectedList.listID].tasks
+          [action.payload.selectedList.id].tasks
           .push(guid);
         // select new task
         draft.ui.selectedTask = guid;
@@ -134,20 +134,14 @@ const tickTickReducer = (state = initialState, action): GlobalState =>
         switch (action.payload.sortType) {
           case 'priority':
             draft.data
-              [action.payload.selectedList.type]
-              [action.payload.selectedList.listID].tasks =
-              draft.data
                 [action.payload.selectedList.type]
-                [action.payload.selectedList.listID].tasks
+                [action.payload.selectedList.id].tasks
                 .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].priority - draft.data.tasks[a].priority);
             break;
           case 'timeAdded':
             draft.data
-              [action.payload.selectedList.type]
-              [action.payload.selectedList.listID].tasks =
-              draft.data
                 [action.payload.selectedList.type]
-                [action.payload.selectedList.listID].tasks
+                [action.payload.selectedList.id].tasks
                 .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].timeCreated - draft.data.tasks[a].timeCreated);
             break;
         }

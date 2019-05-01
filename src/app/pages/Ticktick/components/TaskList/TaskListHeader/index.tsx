@@ -48,10 +48,6 @@ function TaskListHeader(props) {
   );
 }
 
-TaskListHeader.propTypes = {
-
-
-};
 
 const mapStateToProps = (state, ownProps) => ({
   selectedList: state.ticktick.ui.selectedList,
