@@ -8,8 +8,7 @@ import { ADD_TASK } from 'app/pages/Ticktick/components/InputNewTask/actions';
 import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/pages/Ticktick/components/actions';
 import { SELECT_TASK, TOGGLE_DONE } from 'app/pages/Ticktick/components/Task/actions';
 import { SORT_LIST } from 'app/pages/Ticktick/components/TaskList/TaskListHeader/actions';
-import {without} from 'lodash';
-
+import { without } from 'lodash';
 const chance = new Chance(Math.random);
 
 
@@ -22,7 +21,7 @@ const custom: TCustomLists = {
     name: 'Custom',
     type: 'custom'
   }
-}
+};
 
 GenerateMockData(tasks, tags, lists);
 
@@ -59,7 +58,7 @@ export const initialState: GlobalState = {
   }
 };
 
-const typedReducer = (state = initialState, action): GlobalState =>
+const tickTickReducer = (state = initialState, action): GlobalState =>
   produce(state, draft => {
     switch (action.type) {
       case SELECT_TAB:
@@ -73,17 +72,19 @@ const typedReducer = (state = initialState, action): GlobalState =>
         // insert new task into database
         draft.data.tasks[guid] = {
           id: guid,
-          title: action.payload.taskContent,
+          title: action.payload.title,
           description: '',
           priority: action.payload.priority,
           completed: false,
           timeCreated: time,
           timeLastModified: time
         };
+        // insert new task into currently selected list
         draft.data
           [action.payload.selectedList.type]
           [action.payload.selectedList.listID].tasks
           .push(guid);
+        // select new task
         draft.ui.selectedTask = guid;
         break;
       }
@@ -169,4 +170,4 @@ const typedReducer = (state = initialState, action): GlobalState =>
     }
   });
 
-export default typedReducer;
+export default tickTickReducer;

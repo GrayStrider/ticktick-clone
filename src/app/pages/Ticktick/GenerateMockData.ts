@@ -5,14 +5,13 @@ const MOCK_TASKS_AMOUNT = 500;
 const chance = new Chance(Math.random);
 
 export default function generateMockData(
-  tasks: TTasks , tags: TTags, lists:TLists)
-{
+  tasks: TTasks, tags: TTags, lists: TLists) {
 
   // generate tasks
   for (let i = 0; i < MOCK_TASKS_AMOUNT; i += 1) {
-    const guid = chance.guid()
-    const date = new Date()
-    const time = date.getTime()
+    const guid = chance.guid();
+    const date = new Date();
+    const time = date.getTime();
     tasks[guid] = {
       id: guid,
       title: chance.sentence({ words: chance.integer({ min: 2, max: 6 }) }),
@@ -26,29 +25,30 @@ export default function generateMockData(
       timeCreated: time,
       timeLastModified: time
 
-    }
+    };
   }
   // generate tags
   for (let i = 0; i < 10; i += 1) {
-    const guid = chance.guid()
+    const guid = chance.guid();
     tags[guid] = {
       id: guid,
       name: chance.word({ length: chance.integer({ min: 3, max: 10 }) }),
       type: 'tags',
-      tasks: chance.pickset(Object.keys(tasks), chance.integer({ min: MOCK_TASKS_AMOUNT / 10, max: MOCK_TASKS_AMOUNT / 5 })),
+      tasks: chance.pickset(Object.keys(tasks), chance.integer({
+        min: MOCK_TASKS_AMOUNT / 10,
+        max: MOCK_TASKS_AMOUNT / 5
+      }))
     };
   }
-
   // generate lists
   const randomTasksToDistribute = Object.keys(tasks);
-
   for (let i = 0; i < 4; i += 1) {
-    const guid = chance.guid()
+    const guid = chance.guid();
     lists[guid] = {
       id: guid,
       name: chance.capitalize(chance.word({ length: chance.integer({ min: 3, max: 10 }) })),
       type: 'lists',
-      tasks: randomTasksToDistribute.splice(0, chance.integer({ min: 20, max: MOCK_TASKS_AMOUNT / 6 })),
+      tasks: randomTasksToDistribute.splice(0, chance.integer({ min: 20, max: MOCK_TASKS_AMOUNT / 6 }))
     };
   }
 }

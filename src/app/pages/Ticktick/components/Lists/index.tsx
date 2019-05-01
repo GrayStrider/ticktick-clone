@@ -53,13 +53,13 @@ function Lists(props) {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  selectedTab: state.typedTickTick.ui.selectedTab,
-  selectedList: state.typedTickTick.ui.selectedList,
+  selectedTab: state.ticktick.ui.selectedTab,
+  selectedList: state.ticktick.ui.selectedList,
   lists: {
-    tags: state.typedTickTick.data.tags,
-    lists: state.typedTickTick.data.lists,
-    custom: state.typedTickTick.data.custom,
-    defaultLists: state.typedTickTick.defaultLists
+    tags: state.ticktick.data.tags,
+    lists: state.ticktick.data.lists,
+    custom: state.ticktick.data.custom,
+    defaultLists: state.ticktick.defaultLists
   }
 });
 

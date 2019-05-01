@@ -19,8 +19,8 @@ function Checkbox(props) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  completed: state.typedTickTick.data.tasks[ownProps.taskID].completed,
-  priority: state.typedTickTick.data.tasks[ownProps.taskID].priority,
+  completed: state.ticktick.data.tasks[ownProps.taskID].completed,
+  priority: state.ticktick.data.tasks[ownProps.taskID].priority,
 });
 
 const mapDispatchToProps = dispatch => ({

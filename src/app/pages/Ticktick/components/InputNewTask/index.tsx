@@ -19,7 +19,7 @@ function InputNewTask(props) {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       const params = {
-        taskContent: inputValue,
+        title: inputValue,
         priority: 3,
         selectedList: props.selectedList,
       };
@@ -74,7 +74,7 @@ InputNewTask.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  selectedList: state.typedTickTick.ui.selectedList,
+  selectedList: state.ticktick.ui.selectedList,
 });
 
 const mapDispatchToProps = dispatch => ({

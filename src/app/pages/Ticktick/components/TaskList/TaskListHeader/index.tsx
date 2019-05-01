@@ -54,7 +54,7 @@ TaskListHeader.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  selectedList: state.typedTickTick.ui.selectedList,
+  selectedList: state.ticktick.ui.selectedList,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -87,11 +87,11 @@ Tags.propTypes = {
 
 const mapStateToProps = (state, ownProps) => ({
   taskTags: pickBy(
-    state.ticktick.insertableLists.tags,
+    state.ticktick.data.tags,
     (tag) => tag.tasks.includes(
       ownProps.taskID,
     )),
-  tags: state.ticktick.insertableLists.tags,
+  tags: state.ticktick.data.tags,
 });
 
 const mapDispatchToProps = dispatch => ({

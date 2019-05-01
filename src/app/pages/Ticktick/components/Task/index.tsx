@@ -10,9 +10,7 @@ function Task(props) {
   const {
     taskID,
     title,
-    selectTaskAction,
     taskIsSelected,
-    modifyTaskAction,
   } = props;
 
   const inputRef = React.createRef<HTMLInputElement>();
@@ -26,14 +24,14 @@ function Task(props) {
   };
 
   const handleChange = (e) => {
-    modifyTaskAction({
-      id: taskID,
+    props.modifyTaskAction({
+      taskID: taskID,
       data: { title: e.target.value },
     });
   };
 
   return (
-    <Wrapper onClick={() => selectTaskAction(taskID)}
+    <Wrapper onClick={() => props.selectTaskAction(taskID)}
              taskIsSelected={taskIsSelected}>
 
       <Checkbox taskID={taskID}/>
@@ -49,8 +47,8 @@ function Task(props) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  title: state.typedTickTick.data.tasks[ownProps.taskID].title,
-  taskIsSelected: state.typedTickTick.ui.selectedTask === ownProps.taskID,
+  title: state.ticktick.data.tasks[ownProps.taskID].title,
+  taskIsSelected: state.ticktick.ui.selectedTask === ownProps.taskID,
 });
 
 const mapDispatchToProps = dispatch => ({
