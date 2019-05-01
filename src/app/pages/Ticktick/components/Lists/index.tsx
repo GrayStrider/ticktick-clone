@@ -34,7 +34,7 @@ function Lists(props) {
           onClick={() => selectListAction({
             type: list.type,
             name: list.name,
-            listID: list.id
+            id: list.id
           })}
         >
           <span><Icon name='list'/>{lists[selectedTab][list.id].name}</span>
@@ -54,8 +54,7 @@ function Lists(props) {
 
 const mapStateToProps = (state: RootState) => ({
   selectedTab: state.typedTickTick.ui.selectedTab,
-  selectedList: state.ticktick.lists.selectedList,
-  insertableLists: state.ticktick.insertableLists,
+  selectedList: state.typedTickTick.ui.selectedList,
   lists: {
     tags: state.typedTickTick.data.tags,
     lists: state.typedTickTick.data.lists,

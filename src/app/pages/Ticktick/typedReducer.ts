@@ -2,7 +2,7 @@ import produce from 'immer';
 import { GlobalState } from 'app/pages/Ticktick/types/GlobalState';
 import { Chance } from 'chance';
 import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/pages/Ticktick/types/types';
-import typedGenerateMockData from 'app/pages/Ticktick/typedGenerateMockData';
+import GenerateMockData from 'app/pages/Ticktick/GenerateMockData';
 import { SELECT_LIST, SELECT_TAB } from 'app/pages/Ticktick/components/Lists/actions';
 import { ADD_TASK } from 'app/pages/Ticktick/components/InputNewTask/actions';
 import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/pages/Ticktick/components/actions';
@@ -16,9 +16,15 @@ const chance = new Chance(Math.random);
 const tasks = {} as TTasks;
 const tags = {} as TTags;
 const lists = {} as TLists;
-const customLists = {} as TCustomLists;
+const customLists: TCustomLists = {
+  1: {
+    id: '1',
+    name: 'Custom',
+    type: 'custom'
+  }
+}
 
-typedGenerateMockData(tasks, tags, lists);
+GenerateMockData(tasks, tags, lists);
 
 export const initialState: GlobalState = {
   data: {
@@ -28,7 +34,12 @@ export const initialState: GlobalState = {
     customLists
   },
   ui: {
-    selectedList: 'test',
+    selectedList: {
+      id: 'inbox',
+      name: 'Inbox',
+      type: 'inbox'
+
+    },
     selectedTab: ETabs.lists,
     selectedTask: null
   },

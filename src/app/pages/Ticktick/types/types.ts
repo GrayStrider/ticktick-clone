@@ -54,8 +54,8 @@ export interface ICustomList {
   readonly type: 'custom'
 }
 
+// tabs
 export const tabs = ['lists', 'tags', 'custom'];
-
 export enum ETabs {
   lists = 'lists',
   tags = 'tags',
