@@ -40,7 +40,7 @@ TaskDetails.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  tasks: state.ticktick.tasks,
+  tasks: state.typedTickTick.tasks,
   selectedTaskID: state.ticktick.tasksList.selectedTaskID
 });
 

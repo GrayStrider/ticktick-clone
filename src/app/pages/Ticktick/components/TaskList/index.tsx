@@ -12,7 +12,7 @@ function TaskList(props) {
     {
       map(filteredTasks(),
         (task) => (
-          <Task taskID={task.taskID} key={task.taskID}/>
+          <Task taskID={task.id} key={task.id}/>
           ))
     }
   </>;
@@ -32,11 +32,11 @@ TaskList.propTypes = {
 const mapStateToProps = (state) => ({
   filteredTasks: function filteredTasks() {
     const filtered = {}
-    forEach(state.ticktick.insertableLists
-      [state.ticktick.lists.selectedList.type]
-      [state.ticktick.lists.selectedList.listID].tasks,
+    forEach(state.typedTickTick.data
+      [state.typedTickTick.ui.selectedList.type]
+      [state.typedTickTick.ui.selectedList.id].tasks,
       (taskID) => {filtered[taskID] =
-        state.ticktick.tasks[taskID]}
+        state.typedTickTick.data.tasks[taskID]}
       )
     return filtered
   }

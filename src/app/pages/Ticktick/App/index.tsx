@@ -28,9 +28,9 @@ function TickTick(props) {
         </Grid.Column>
 
         <Grid.Column className='center'>
-          {/*<TaskListHeader/>*/}
-          {/*<InputNewTask/>*/}
-          {/*<TaskList/>*/}
+          <TaskListHeader/>
+          <InputNewTask/>
+          <TaskList/>
         </Grid.Column>
 
         <Grid.Column className='right'>

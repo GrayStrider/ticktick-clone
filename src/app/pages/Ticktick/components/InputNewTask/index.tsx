@@ -74,7 +74,7 @@ InputNewTask.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  selectedList: state.ticktick.lists.selectedList,
+  selectedList: state.typedTickTick.ui.selectedList,
 });
 
 const mapDispatchToProps = dispatch => ({

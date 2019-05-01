@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as PropTypes from 'prop-types';
 import { Checkbox as CheckboxSemantic } from 'semantic-ui-react';
-import { IWrapper, Wrapper } from './styles';
+import { Wrapper } from './styles';
 import { toggleDone } from '../Task/actions';
 
 function Checkbox(props) {
@@ -19,16 +18,9 @@ function Checkbox(props) {
   );
 }
 
-Checkbox.propTypes = {
-  completed: PropTypes.bool,
-  toggleDone: PropTypes.func,
-  taskID: PropTypes.string,
-  priority: PropTypes.number,
-};
-
 const mapStateToProps = (state, ownProps) => ({
-  completed: state.ticktick.tasks[ownProps.taskID].completed,
-  priority: state.ticktick.tasks[ownProps.taskID].priority,
+  completed: state.typedTickTick.data.tasks[ownProps.taskID].completed,
+  priority: state.typedTickTick.data.tasks[ownProps.taskID].priority,
 });
 
 const mapDispatchToProps = dispatch => ({

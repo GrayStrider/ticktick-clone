@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import * as PropTypes from 'prop-types';
 import { Wrapper } from './styles';
 import { selectTask } from './actions';
 import Checkbox from '../Checkbox';
@@ -10,7 +9,7 @@ import Tags from './Tags';
 function Task(props) {
   const {
     taskID,
-    taskContent,
+    title,
     selectTaskAction,
     taskIsSelected,
     modifyTaskAction,
@@ -28,8 +27,8 @@ function Task(props) {
 
   const handleChange = (e) => {
     modifyTaskAction({
-      taskID: taskID,
-      data: { taskContent: e.target.value },
+      id: taskID,
+      data: { title: e.target.value },
     });
   };
 
@@ -40,7 +39,7 @@ function Task(props) {
       <Checkbox taskID={taskID}/>
       <input ref={inputRef}
              spellCheck={false}
-             value={taskContent}
+             value={title}
              onChange={handleChange}
              onKeyDown={handleKeyDown}
       />
@@ -49,17 +48,9 @@ function Task(props) {
   );
 }
 
-Task.propTypes = {
-  taskID: PropTypes.string,
-  taskContent: PropTypes.string,
-  taskIsSelected: PropTypes.bool,
-  selectTaskAction: PropTypes.func,
-  modifyTaskAction: PropTypes.func,
-};
-
 const mapStateToProps = (state, ownProps) => ({
-  taskContent: state.ticktick.tasks[ownProps.taskID].taskContent,
-  taskIsSelected: state.ticktick.tasksList.selectedTaskID === ownProps.taskID,
+  title: state.typedTickTick.data.tasks[ownProps.taskID].title,
+  taskIsSelected: state.typedTickTick.ui.selectedTask === ownProps.taskID,
 });
 
 const mapDispatchToProps = dispatch => ({

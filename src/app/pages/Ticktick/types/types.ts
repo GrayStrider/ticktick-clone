@@ -9,7 +9,6 @@ export interface ITask {
   description: string
   priority: EPriorities
   completed: boolean
-  list: TListID
   readonly timeCreated: number
   // time in seconds
   timeLastModified: number
@@ -41,7 +40,9 @@ export type TLists = { [ID: string]: IList }
 export interface IList {
   readonly id: TListID
   name: string
-  readonly type: 'list'
+  readonly type: 'lists',
+  tasks: TTaskID[]
+
 }
 
 

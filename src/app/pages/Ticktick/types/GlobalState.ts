@@ -6,7 +6,21 @@ export interface GlobalState {
     tasks: TTasks
     tags: TTags
     lists: TLists,
-    customLists: TCustomLists
+    custom: TCustomLists,
+    defaultLists: {
+      inbox: {
+        id: 'inbox',
+        name: 'Inbox',
+        type: 'defaultLists',
+        tasks: []
+      },
+      nextSevenDays: {
+        id: 'sevenDays',
+        name: 'Next 7 Days',
+        type: 'defaultLists',
+        tasks: []
+      }
+    }
   },
 
   ui: {
@@ -14,17 +28,4 @@ export interface GlobalState {
     selectedTab: ETabs
     selectedTask: TTaskID | null
   },
-
-  defaultLists: {
-    inbox: {
-      id: 'inbox',
-      name: 'Inbox',
-      type: 'inbox'
-    },
-    nextSevenDays: {
-      id: 'sevenDays',
-      name: 'Next 7 Days',
-      type: 'sevenDays'
-    }
-  }
 }

@@ -16,7 +16,7 @@ const chance = new Chance(Math.random);
 const tasks = {} as TTasks;
 const tags = {} as TTags;
 const lists = {} as TLists;
-const customLists: TCustomLists = {
+const custom: TCustomLists = {
   1: {
     id: '1',
     name: 'Custom',
@@ -31,29 +31,31 @@ export const initialState: GlobalState = {
     tasks,
     tags,
     lists,
-    customLists
+    custom,
+    defaultLists: {
+      inbox: {
+        id: 'inbox',
+        name: 'Inbox',
+        type: 'defaultLists',
+        tasks: []
+      },
+      nextSevenDays: {
+        id: 'sevenDays',
+        name: 'Next 7 Days',
+        type: 'defaultLists',
+        tasks: []
+      }
+    }
   },
   ui: {
     selectedList: {
-      id: 'inbox',
-      name: 'Inbox',
-      type: 'inbox'
+      id: '1',
+      name: 'Custom',
+      type: 'custom'
 
     },
-    selectedTab: ETabs.lists,
+    selectedTab: ETabs.custom,
     selectedTask: null
-  },
-  defaultLists: {
-    inbox: {
-      id: 'inbox',
-      name: 'Inbox',
-      type: 'inbox'
-    },
-    nextSevenDays: {
-      id: 'sevenDays',
-      name: 'Next 7 Days',
-      type: 'sevenDays'
-    }
   }
 };
 
@@ -73,7 +75,6 @@ const typedReducer = (state = initialState, action): GlobalState =>
           id: guid,
           title: action.payload.taskContent,
           description: '',
-          list: 'inbox',
           priority: action.payload.priority,
           completed: false,
           timeCreated: time,

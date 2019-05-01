@@ -58,7 +58,7 @@ const mapStateToProps = (state: RootState) => ({
   lists: {
     tags: state.typedTickTick.data.tags,
     lists: state.typedTickTick.data.lists,
-    custom: state.typedTickTick.data.customLists,
+    custom: state.typedTickTick.data.custom,
     defaultLists: state.typedTickTick.defaultLists
   }
 });
