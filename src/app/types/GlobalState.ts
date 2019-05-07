@@ -1,4 +1,4 @@
-import { ETabs, IList, TCustomLists, TListID, TLists, TTags, TTaskID, TTasks } from 'app/types/types';
+import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/types/types';
 
 
 export interface GlobalState {
