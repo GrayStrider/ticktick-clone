@@ -1,13 +1,13 @@
 import produce from 'immer';
-import { GlobalState } from 'app/pages/Ticktick/types/GlobalState';
+import { GlobalState } from 'app/types/GlobalState';
 import { Chance } from 'chance';
-import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/pages/Ticktick/types/types';
-import GenerateMockData from 'app/pages/Ticktick/GenerateMockData';
-import { SELECT_LIST, SELECT_TAB } from 'app/pages/Ticktick/components/Lists/actions';
-import { ADD_TASK } from 'app/pages/Ticktick/components/InputNewTask/actions';
-import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/pages/Ticktick/components/actions';
-import { SELECT_TASK, TOGGLE_DONE } from 'app/pages/Ticktick/components/Task/actions';
-import { SORT_LIST } from 'app/pages/Ticktick/components/TaskList/TaskListHeader/actions';
+import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/types/types';
+import GenerateMockData from 'app/utils/GenerateMockData';
+import { SELECT_LIST, SELECT_TAB } from 'app/components/Lists/actions';
+import { ADD_TASK } from 'app/components/InputNewTask/actions';
+import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/components/actions';
+import { SELECT_TASK, TOGGLE_DONE } from 'app/components/Task/actions';
+import { SORT_LIST } from 'app/components/TaskList/TaskListHeader/actions';
 import { without } from 'lodash';
 
 const chance = new Chance(Math.random);
@@ -59,7 +59,7 @@ export const initialState: GlobalState = {
   }
 };
 
-const tickTickReducer = (state = initialState, action): GlobalState =>
+const ticktick = (state = initialState, action): GlobalState =>
   produce(state, draft => {
     switch (action.type) {
       case SELECT_TAB:
@@ -165,4 +165,4 @@ const tickTickReducer = (state = initialState, action): GlobalState =>
     }
   });
 
-export default tickTickReducer;
+export default ticktick;

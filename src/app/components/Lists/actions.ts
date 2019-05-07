@@ -1,4 +1,4 @@
-import { ETabs, TListID } from 'app/pages/Ticktick/types/types';
+import { ETabs, TListID } from 'app/types/types';
 
 export const SELECT_TAB = 'SELECT_TAB';
 export const SELECT_LIST = 'SELECT_LIST';

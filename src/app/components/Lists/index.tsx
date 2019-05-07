@@ -5,7 +5,7 @@ import { map } from 'lodash';
 import { Wrapper } from './styles';
 import { selectList, selectTab } from './actions';
 import messages from './messages';
-import { ETabs, ICustomList, IList, ITag } from 'app/pages/Ticktick/types/types';
+import { ETabs, ICustomList, IList, ITag } from 'app/types/types';
 import { RootState } from 'app/reducers';
 
 function Lists(props) {

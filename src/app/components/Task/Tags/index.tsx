@@ -3,23 +3,16 @@ import { connect } from 'react-redux';
 import { map, pickBy, truncate, keys, pick } from 'lodash';
 import { Label } from 'semantic-ui-react';
 import { Wrapper } from './styles';
-import { ITag, TTags, TTaskID } from 'app/pages/Ticktick/types/types';
-import { RootState } from 'app/reducers';
 
-interface OwnProps {
-  taskID: TTaskID;
-}
+function Tags (props){
+  const {taskTags} = props;
 
-interface StateProps {
-  taskTags: TTags;
-}
-
-function Tags ({ taskTags }: OwnProps & StateProps){
   return (
     <Wrapper>
       {
         map(pick(taskTags, keys(taskTags).slice(0, 3)),
-          (tag: ITag) => (<React.Fragment key={tag.id}>
+          (tag) => (
+            <React.Fragment key={tag.id}>
               <Label size='mini'>
                 {truncate(tag.name, { length: 8 })}
               </Label>
@@ -36,7 +29,7 @@ function Tags ({ taskTags }: OwnProps & StateProps){
 }
 
 
-const mapStateToProps = (state: RootState, ownProps: OwnProps) => ({
+const mapStateToProps = (state, ownProps) => ({
   taskTags: pickBy(
     state.ticktick.data.tags,
     (tag) => tag.tasks.includes(

@@ -1,4 +1,4 @@
-import { ETabs, IList, TCustomLists, TListID, TLists, TTags, TTaskID, TTasks } from 'app/pages/Ticktick/types/types';
+import { ETabs, IList, TCustomLists, TListID, TLists, TTags, TTaskID, TTasks } from 'app/types/types';
 
 
 export interface GlobalState {

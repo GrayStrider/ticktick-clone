@@ -4,7 +4,7 @@ import { Form, TextArea } from 'semantic-ui-react';
 import { Wrapper } from './styles';
 import Checkbox from '../Checkbox';
 import Tags from './Tags'
-import { TTaskID, TTasks } from 'app/pages/Ticktick/types/types';
+import { TTaskID, TTasks } from 'app/types/types';
 
 type Props = {
   selectedTaskID: TTaskID,

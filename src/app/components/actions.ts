@@ -1,4 +1,4 @@
-import { ETabs, TTaskID } from 'app/pages/Ticktick/types/types';
+import { ETabs, TTaskID } from 'app/types/types';
 
 export const MODIFY_TASK = 'MODIFY_TASK';
 export const MODIFY_LIST = 'MODIFY_LIST';

@@ -6,7 +6,7 @@ import { Dropdown } from 'semantic-ui-react';
 import { Wrapper } from './styles';
 import { addTaskToList, deleteTaskFromList } from '../../actions';
 import { selectList, selectTab } from '../../Lists/actions';
-import { ETabs, TTags, TTaskID } from 'app/pages/Ticktick/types/types';
+import { ETabs, TTags, TTaskID } from 'app/types/types';
 import { RootState } from 'app/reducers';
 
 type Props = {
