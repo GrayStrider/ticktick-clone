@@ -1,7 +1,7 @@
 import { Chance } from 'chance';
 import { EPriorities, ETabs, TLists, TTags, TTasks } from 'app/types/types';
 
-const MOCK_TASKS_AMOUNT = 500;
+const MOCK_TASKS_AMOUNT = 1000;
 const chance = new Chance(Math.random);
 
 export default function generateMockData(
@@ -48,7 +48,7 @@ export default function generateMockData(
       id: guid,
       name: chance.capitalize(chance.word({ length: chance.integer({ min: 3, max: 10 }) })),
       type: ETabs.lists,
-      tasks: randomTasksToDistribute.splice(0, chance.integer({ min: 20, max: MOCK_TASKS_AMOUNT / 6 }))
+      tasks: randomTasksToDistribute.splice(0, chance.integer({ min: MOCK_TASKS_AMOUNT / 25, max: MOCK_TASKS_AMOUNT / 6 }))
     };
   }
 }

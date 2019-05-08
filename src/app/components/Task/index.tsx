@@ -6,15 +6,17 @@ import Checkbox from '../Checkbox';
 import { modifyTask } from '../../actions';
 import Tags from './Tags';
 import { getTitle } from 'app/components/Task/selectors';
+import { useEffect, useState } from 'react';
 
 function Task(props) {
-  const {
-    taskID,
-    title,
-    taskIsSelected,
-  } = props;
-
+  const { taskID, title, taskIsSelected } = props;
   const inputRef = React.createRef<HTMLInputElement>();
+  const [value, changeValue] = useState(title)
+  // let editableTitle = (document.getElementById('editableTitle') as HTMLInputElement);
+  // useEffect(() => {
+  //   // @ts-ignore
+  //   inputRef.current.value = title;
+  // }, []);
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -25,10 +27,11 @@ function Task(props) {
   };
 
   const handleChange = (e) => {
-    props.modifyTaskAction({
-      taskID: taskID,
-      data: { title: e.target.value },
-    });
+    // props.modifyTaskAction({
+    //   taskID: taskID,
+    //   data: { title: e.target.value }
+    // });
+    changeValue(e.target.value)
   };
 
   return (
@@ -36,11 +39,14 @@ function Task(props) {
              taskIsSelected={taskIsSelected}>
 
       <Checkbox taskID={taskID}/>
-      <input ref={inputRef}
-             spellCheck={false}
-             value={title}
-             onChange={handleChange}
-             onKeyDown={handleKeyDown}
+      <input
+        // ref={inputRef}
+        spellCheck={false}
+        defaultValue={title}
+        // value={value}
+        // onChange={handleChange}
+        // onKeyDown={handleKeyDown}
+        // id='editableTitle'
       />
       <Tags taskID={taskID}/>
     </Wrapper>
@@ -49,12 +55,12 @@ function Task(props) {
 
 const mapStateToProps = (state, ownProps) => ({
   title: getTitle(state, ownProps),
-  taskIsSelected: state.ticktick.ui.selectedTask === ownProps.taskID,
+  taskIsSelected: state.ticktick.ui.selectedTask === ownProps.taskID
 });
 
 const mapDispatchToProps = dispatch => ({
   selectTaskAction: (taskID) => dispatch(selectTask(taskID)),
-  modifyTaskAction: ({ taskID, data }) => dispatch(modifyTask({ taskID, data })),
+  modifyTaskAction: ({ taskID, data }) => dispatch(modifyTask({ taskID, data }))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Task);

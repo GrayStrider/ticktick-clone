@@ -14,22 +14,6 @@ function InputNewTask(props) {
   InputNewTask.handleClickOutside = () => toggleButtonBar(false);
 
   const [buttonBarActive, toggleButtonBar] = React.useState(false);
-  // const [inputValue, changeInputValue] = React.useState('');
-
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      props.addTask({
-        title: event.target.value,
-        priority: EPriorities.None
-      });
-      // changeInputValue('');
-      event.target.value = '';
-    }
-  };
-
-  // const handleChange = (event) => {
-  //   changeInputValue(event.target.value);
-  // };
 
   const handleSubmit = (event) => {
     const input = event.target.querySelector('input')
@@ -46,11 +30,7 @@ function InputNewTask(props) {
            onClick={() => toggleButtonBar(true)}>
 
         <Form onSubmit={handleSubmit}>
-          <Form.Input placeholder={placeholder}
-            // value={inputValue}
-            // onKeyDown={handleKeyDown}
-            // onChange={handleChange}
-                      fluid/>
+          <Form.Input placeholder={placeholder} fluid/>
         </Form>
 
       </div>
