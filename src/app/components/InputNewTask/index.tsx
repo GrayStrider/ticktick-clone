@@ -31,9 +31,15 @@ function InputNewTask(props) {
   //   changeInputValue(event.target.value);
   // };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    const input = event.target.querySelector('input')
+    props.addTask({
+      title: input.value,
+      priority: EPriorities.None
+    });
+    input.value = '';
 
-  }
+  };
   return (
     <Wrapper buttonBarActive={buttonBarActive}>
       <div role='presentation'
@@ -41,7 +47,6 @@ function InputNewTask(props) {
 
         <Form onSubmit={handleSubmit}>
           <Form.Input placeholder={placeholder}
-                      name='taskInput'
             // value={inputValue}
             // onKeyDown={handleKeyDown}
             // onChange={handleChange}
