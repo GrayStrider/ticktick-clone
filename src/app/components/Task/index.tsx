@@ -40,12 +40,12 @@ function Task(props) {
 
       <Checkbox taskID={taskID}/>
       <input
-        // ref={inputRef}
+        ref={inputRef}
         spellCheck={false}
         defaultValue={title}
         // value={value}
         // onChange={handleChange}
-        // onKeyDown={handleKeyDown}
+        onKeyDown={handleKeyDown}
         // id='editableTitle'
       />
       <Tags taskID={taskID}/>
