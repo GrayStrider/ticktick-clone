@@ -7,23 +7,29 @@ import { modifyTask } from '../../actions';
 import Tags from './Tags';
 import { getTitle } from 'app/components/Task/selectors';
 import { useEffect, useState } from 'react';
+import { debounce } from 'lodash';
 
 function Task(props) {
   const { taskID, title, taskIsSelected } = props;
   const inputRef = React.createRef<HTMLInputElement>();
-  const [value, changeValue] = useState(title)
+  const [value, changeValue] = useState(title);
   // let editableTitle = (document.getElementById('editableTitle') as HTMLInputElement);
   // useEffect(() => {
   //   // @ts-ignore
   //   inputRef.current.value = title;
   // }, []);
-
+  const debouncedFunction = debounce(() => {
+    console.log('debounced');
+  }, 1000, {maxWait: 2000});
   const handleKeyDown = (e) => {
+    debouncedFunction();
     if (e.key === 'Enter') {
       e.preventDefault();
       // @ts-ignore
       inputRef.current.blur();
     }
+    // @ts-ignore
+    // setTimeout(() => console.log(inputRef.current.value), 1000)
   };
 
   const handleChange = (e) => {
@@ -31,7 +37,7 @@ function Task(props) {
     //   taskID: taskID,
     //   data: { title: e.target.value }
     // });
-    changeValue(e.target.value)
+    changeValue(e.target.value);
   };
 
   return (
