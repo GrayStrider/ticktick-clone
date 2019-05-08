@@ -3,23 +3,23 @@ import styled from 'styled-components';
 export const Wrapper = styled.span<{
   buttonBarActive: boolean
 }>`
-  padding: 0.5em 1em 0.5em 1em;
+  padding: 0.5em 1em 0.5em 1em !important;
   
-  .input input {
-    background: black;
+  input {
+    background: black !important;
     color: white !important;
-    border: 1px solid gray;
-    border-radius: 1px;
-    padding: 0.5em ${props => props.buttonBarActive ? '7em' : '0.5em'} 0.5em 0.5em ;
+    border: 1px solid gray !important;
+    border-radius: 1px !important;
+    padding: 0.5em ${props => props.buttonBarActive ? '7em' : '0.5em'} 0.5em 0.5em !important;
     &::placeholder {
-      color: #ffffff;
+      color: #ffffff !important;
     }
     
     &:focus {
-      background: black;
+      background: black !important;
       
       &::placeholder {
-        color: #ffffff;
+        color: #ffffff !important;
       }
     }
   }

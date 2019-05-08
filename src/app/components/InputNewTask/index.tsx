@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Icon, Input, Popup } from 'semantic-ui-react';
+import { Form, Icon, Input, Popup } from 'semantic-ui-react';
 import onClickOutside from 'react-onclickoutside';
 import { Wrapper } from './styles';
 import { InputButtonBar } from './inputButtonBar';
@@ -20,7 +20,7 @@ function InputNewTask(props) {
     if (event.key === 'Enter') {
       props.addTask({
         title: event.target.value,
-        priority: EPriorities.None,
+        priority: EPriorities.None
       });
       // changeInputValue('');
       event.target.value = '';
@@ -31,16 +31,22 @@ function InputNewTask(props) {
   //   changeInputValue(event.target.value);
   // };
 
+  const handleSubmit = () => {
+
+  }
   return (
     <Wrapper buttonBarActive={buttonBarActive}>
       <div role='presentation'
            onClick={() => toggleButtonBar(true)}>
 
-        <Input placeholder={placeholder}
-               // value={inputValue}
-               onKeyDown={handleKeyDown}
-               // onChange={handleChange}
-               fluid/>
+        <Form onSubmit={handleSubmit}>
+          <Form.Input placeholder={placeholder}
+                      name='taskInput'
+            // value={inputValue}
+            // onKeyDown={handleKeyDown}
+            // onChange={handleChange}
+                      fluid/>
+        </Form>
 
       </div>
 
@@ -68,12 +74,12 @@ function InputNewTask(props) {
 }
 
 const mapStateToProps = state => ({
-  selectedList: state.ticktick.ui.selectedList,
+  selectedList: state.ticktick.ui.selectedList
 });
 
 const dispatchProps = {
   addTask
-}
+};
 
 
 // @ts-ignore
