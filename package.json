@@ -14,7 +14,7 @@
   "main": "index.js",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy_now": "now ./build --static --no-clipboard --token=$NOW_TOKEN --public",
+    "deploy_now": "now ./build --token=$NOW_TOKEN",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --hot --progress --color --port 3001 --open",
     "build": "webpack -p --progress --colors",
