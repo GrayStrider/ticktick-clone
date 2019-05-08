@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { map, forEach } from 'lodash';
+import { map} from 'lodash';
 import { Wrapper } from './styles';
 import Task from '../Task';
 import Scrollbar from '../Scrollbar';
 import { getCurrentListTasks } from 'app/components/TaskList/selectors';
 
 function TaskList(props) {
-  const {filteredTasks} = props
+  const { filteredTasks } = props;
   const ListWrapper = <>
     {
       map(filteredTasks,
         (task) => (
           <Task taskID={task.id} key={task.id}/>
-          ))
+        ))
     }
   </>;
   return (
@@ -25,10 +25,6 @@ function TaskList(props) {
     </Wrapper>
   );
 }
-
-TaskList.propTypes = {
-
-};
 
 const mapStateToProps = (state) => ({
   filteredTasks: getCurrentListTasks(state)
