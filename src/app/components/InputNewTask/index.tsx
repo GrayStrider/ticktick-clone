@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-
 import { Icon, Input, Popup } from 'semantic-ui-react';
 import onClickOutside from 'react-onclickoutside';
 import { Wrapper } from './styles';
 import { InputButtonBar } from './inputButtonBar';
-import { addTask } from './actions';
+import { addTask, TaskInput } from '../../actions/index';
+import { EPriorities } from 'app/types/types';
+import { bindActionCreators } from 'redux';
 
 
 function InputNewTask(props) {
@@ -18,12 +19,10 @@ function InputNewTask(props) {
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      const params = {
+      props.addTask({
         title: inputValue,
-        priority: 3,
-        selectedList: props.selectedList,
-      };
-      props.addTask(params);
+        priority: EPriorities.None,
+      });
       changeInputValue('');
     }
   };
@@ -68,20 +67,16 @@ function InputNewTask(props) {
   );
 }
 
-InputNewTask.propTypes = {
-
-
-};
-
 const mapStateToProps = state => ({
   selectedList: state.ticktick.ui.selectedList,
 });
 
-const mapDispatchToProps = dispatch => ({
-  addTask: (params) => dispatch(addTask(params)),
-});
+const dispatchProps = (dispatch) => bindActionCreators({
+  addTask: ({title, priority}:TaskInput) => addTask({title, priority})
+}, dispatch);
+
 
 // @ts-ignore
 const clickOutsideConfig = { handleClickOutside: () => InputNewTask.handleClickOutside };
-export default connect(mapStateToProps, mapDispatchToProps)
+export default connect(mapStateToProps, dispatchProps)
 (onClickOutside(InputNewTask, clickOutsideConfig));

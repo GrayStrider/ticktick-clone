@@ -1,4 +1,6 @@
-import { ETabs, TTaskID } from 'app/types/types';
+
+
+import { ETabs, ITask, TTaskID } from 'app/types/types';
 
 export const MODIFY_TASK = 'MODIFY_TASK';
 export const MODIFY_LIST = 'MODIFY_LIST';
@@ -30,10 +32,9 @@ type TAddTaskToList = {
   type: ETabs
   listID: string
 }
-export function addTaskToList (payload: TAddTaskToList) {
+export function addTaskToList2 (payload: TAddTaskToList) {
   return {
     type: ADD_TASK_TO_LIST,
     payload,
   };
 }
-

@@ -3,11 +3,11 @@ import { Grid, Icon, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 import { Wrapper } from './styles';
-import Lists from '../components/Lists';
-import TaskList from '../components/TaskList';
-import InputNewTask from '../components/InputNewTask';
-import TaskDetails from '../components/TaskDetails';
-import TaskListHeader from '../components/TaskList/TaskListHeader';
+import Lists from '../Lists';
+import TaskList from '../TaskList';
+import InputNewTask from '../InputNewTask';
+import TaskDetails from '../TaskDetails';
+import TaskListHeader from '../TaskList/TaskListHeader';
 
 function TickTick(props) {
 

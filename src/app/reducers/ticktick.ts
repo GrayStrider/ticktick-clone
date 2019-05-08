@@ -4,11 +4,15 @@ import { Chance } from 'chance';
 import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/types/types';
 import GenerateMockData from 'app/utils/GenerateMockData';
 import { SELECT_LIST, SELECT_TAB } from 'app/components/Lists/actions';
-import { ADD_TASK } from 'app/components/InputNewTask/actions';
-import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/components/actions';
+// import { ADD_TASK } from 'app/components/InputNewTask/actions';
+import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/actions';
+import {addTask} from 'app/actions/index';
 import { SELECT_TASK, TOGGLE_DONE } from 'app/components/Task/actions';
 import { SORT_LIST } from 'app/components/TaskList/TaskListHeader/actions';
 import { without } from 'lodash';
+import { ActionType, getType } from 'typesafe-actions';
+import * as todos from 'app/actions';
+export type TodosAction = ActionType<typeof todos>;
 
 const chance = new Chance(Math.random);
 
@@ -59,36 +63,40 @@ export const initialState: GlobalState = {
   }
 };
 
-const ticktick = (state = initialState, action): GlobalState =>
+const ticktick = (state: GlobalState = initialState, action: TodosAction): GlobalState =>
   produce(state, draft => {
     switch (action.type) {
       case SELECT_TAB:
         draft.ui.selectedTab = action.payload;
         break;
 
-      case ADD_TASK: {
-        const date = new Date();
-        const time = date.getTime();
-        const guid = chance.guid();
-        // insert new task into database
-        draft.data.tasks[guid] = {
-          id: guid,
-          title: action.payload.title,
-          description: '',
-          priority: action.payload.priority,
-          completed: false,
-          timeCreated: time,
-          timeLastModified: time
-        };
-        // insert new task into currently selected list
-        draft.data
-          [action.payload.selectedList.type]
-          [action.payload.selectedList.id].tasks
-          .push(guid);
-        // select new task
-        draft.ui.selectedTask = guid;
+      case getType(addTask):
+        console.log(action.payload)
+
+        // {
+      //   const date = new Date();
+      //   const time = date.getTime();
+      //   const guid = chance.guid();
+      //   // insert new task into database
+      //   draft.data.tasks[guid] = {
+      //     id: guid,
+      //     title: action.payload.title,
+      //     description: '',
+      //     priority: action.payload.priority,
+      //     completed: false,
+      //     timeCreated: time,
+      //     timeLastModified: time
+      //   };
+      //   // insert new task into currently selected list
+      //   draft.data
+      //     [action.payload.selectedList.type]
+      //     [action.payload.selectedList.id].tasks
+      //     .push(guid);
+      //   // select new task
+      //   draft.ui.selectedTask = guid;
+      // }
         break;
-      }
+
 
       case MODIFY_TASK: {
         const date = new Date();

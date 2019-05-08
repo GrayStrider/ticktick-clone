@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { difference, keys, map, pickBy } from 'lodash';
 import { Dropdown } from 'semantic-ui-react';
 import { Wrapper } from './styles';
-import { addTaskToList, deleteTaskFromList } from '../../actions';
+import { addTaskToList2, deleteTaskFromList } from '../../../actions';
 import { selectList, selectTab } from '../../Lists/actions';
 import { ETabs, TTags, TTaskID } from 'app/types/types';
 import { RootState } from 'app/reducers';
@@ -12,7 +12,7 @@ import { RootState } from 'app/reducers';
 type Props = {
   taskID: TTaskID
   tags: TTags
-  addTaskToList: typeof addTaskToList
+  addTaskToList: typeof addTaskToList2
   deleteTaskFromList: typeof deleteTaskFromList
   selectList: typeof selectList
 }
@@ -95,7 +95,7 @@ interface StateFromProps {
 
 interface DispatchFromProps {
   deleteTaskFromList: typeof deleteTaskFromList
-  addTaskToList: typeof addTaskToList
+  addTaskToList: typeof addTaskToList2
   selectList: typeof selectList
   selectTab: typeof selectTab
 }
@@ -111,7 +111,7 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteTaskFromList: (payload) => dispatch(deleteTaskFromList(payload)),
-  addTaskToList: (payload) => dispatch(addTaskToList(payload)),
+  addTaskToList: (payload) => dispatch(addTaskToList2(payload)),
   selectList: (payload) => dispatch(selectList(payload)),
   selectTab: (payload) => dispatch(selectTab(payload))
 });
