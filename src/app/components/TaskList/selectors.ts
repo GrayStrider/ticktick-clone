@@ -12,8 +12,16 @@ export const getCurrentListTasks = createSelector(
     data: Pick<GlobalState, 'data'>,
     selectedList: IList,
     tasks: TTasks) => {
-    filter(tasks, (task: ITask) =>
-      data[selectedList.type][selectedList.id].tasks.includes(task.id))
+    console.log(
+      JSON.stringify(
+        filter(tasks, (task) => (
+          data[selectedList.type][selectedList.id].tasks
+            .includes(task.id)
+        ))
+      )
+    );
   }
 );
 
+
+// data[selectedList.type][selectedList.id].tasks.includes(task.id)
