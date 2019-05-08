@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Checkbox as CheckboxSemantic } from 'semantic-ui-react';
 import { Wrapper } from './styles';
 import { toggleDone } from '../Task/actions';
+import { getCompleted } from 'app/components/Checkbox/selectors';
 
 function Checkbox(props) {
   return (
@@ -19,7 +20,8 @@ function Checkbox(props) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  completed: state.ticktick.data.tasks[ownProps.taskID].completed,
+  // completed: state.ticktick.data.tasks[ownProps.taskID].completed,
+  completed: getCompleted(state, ownProps),
   priority: state.ticktick.data.tasks[ownProps.taskID].priority,
 });
 
