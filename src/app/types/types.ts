@@ -55,6 +55,8 @@ export interface ICustomList {
   readonly id: TCustomListID
   name: string
   readonly type: ETabs.custom
+  tasks: TTaskID[]
+
 }
 
 // tabs

@@ -13,7 +13,6 @@ import { ActionType, getType } from 'typesafe-actions';
 import * as todos from 'app/actions';
 // @ts-ignore
 import cuid from 'cuid';
-import { any } from 'prop-types';
 
 export type TodosAction = ActionType<typeof todos>;
 
@@ -27,7 +26,8 @@ const custom: TCustomLists = {
   1: {
     id: '1',
     name: 'Custom',
-    type: ETabs.custom
+    type: ETabs.custom,
+    tasks: []
   }
 };
 

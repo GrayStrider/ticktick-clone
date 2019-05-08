@@ -5,12 +5,13 @@ import { map, forEach } from 'lodash';
 import { Wrapper } from './styles';
 import Task from '../Task';
 import Scrollbar from '../Scrollbar';
+import { getCurrentListTasks } from 'app/components/TaskList/selectors';
 
 function TaskList(props) {
   const {filteredTasks} = props
   const ListWrapper = <>
     {
-      map(filteredTasks(),
+      map(filteredTasks,
         (task) => (
           <Task taskID={task.id} key={task.id}/>
           ))
@@ -30,16 +31,7 @@ TaskList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  filteredTasks: function filteredTasks() {
-    const filtered = {}
-    forEach(state.ticktick.data
-      [state.ticktick.ui.selectedList.type]
-      [state.ticktick.ui.selectedList.id].tasks,
-      (taskID) => {filtered[taskID] =
-        state.ticktick.data.tasks[taskID]}
-      )
-    return filtered
-  }
+  filteredTasks: getCurrentListTasks(state)
 
 });
 

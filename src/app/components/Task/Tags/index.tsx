@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { map, pickBy, truncate, keys, pick } from 'lodash';
 import { Label } from 'semantic-ui-react';
 import { Wrapper } from './styles';
+import { getTaskTags } from 'app/components/Task/Tags/selectors';
 
 function Tags (props){
   const {taskTags} = props;
@@ -29,12 +30,8 @@ function Tags (props){
 }
 
 
-const mapStateToProps = (state, ownProps) => ({
-  taskTags: pickBy(
-    state.ticktick.data.tags,
-    (tag) => tag.tasks.includes(
-      ownProps.taskID
-    ))
+const mapStateToProps = (state, props) => ({
+  taskTags: getTaskTags(state, props)
 });
 
 
