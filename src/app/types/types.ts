@@ -2,7 +2,7 @@
 
 export type TTaskID = string
 export type TTasks = { [ID: string]: ITask }
-
+export type TaskInput = Pick<ITask, 'title' | 'priority'>
 export interface ITask {
   readonly id: TTaskID
   title: string

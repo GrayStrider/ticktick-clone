@@ -5,14 +5,15 @@ import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/types/t
 import GenerateMockData from 'app/utils/GenerateMockData';
 import { SELECT_LIST, SELECT_TAB } from 'app/components/Lists/actions';
 import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/actions';
-import { addTask, TaskInput } from 'app/actions/index';
+import { addTask } from 'app/actions/index';
 import { SELECT_TASK, TOGGLE_DONE } from 'app/components/Task/actions';
 import { SORT_LIST } from 'app/components/TaskList/TaskListHeader/actions';
 import { without } from 'lodash';
-import { action, ActionType, createReducer, getType } from 'typesafe-actions';
+import { ActionType, getType } from 'typesafe-actions';
 import * as todos from 'app/actions';
 // @ts-ignore
 import cuid from 'cuid';
+import { any } from 'prop-types';
 
 export type TodosAction = ActionType<typeof todos>;
 
@@ -65,7 +66,7 @@ export const initialState: GlobalState = {
   }
 };
 
-const ticktick = (state: GlobalState = initialState, action: TodosAction): GlobalState =>
+const ticktick = (state: GlobalState = initialState, action: TodosAction) =>
   produce(state, draft => {
     switch (action.type) {
       case SELECT_TAB:
@@ -84,17 +85,21 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction): Globa
           priority: action.payload.priority,
           completed: false,
           timeCreated: time,
-          timeLastModified: time,
+          timeLastModified: time
         };
 
-          // insert new task into currently selected list
-          draft.data
-            [action.payload.selectedList.type]
-            [action.payload.selectedList.id].tasks
-            .push(id);
-          // select new task
-          draft.ui.selectedTask = id;
-          //TODO: type inference for payloads
+        // insert new task into currently selected list
+        // @ts-ignore
+        if (draft.ui.selectedList.type === ETabs.custom) {
+          window.alert('implement logic adding to custom lists: ' +
+            'apply list filters to the task');
+        } else {
+          // @ts-ignore
+          draft.data[draft.ui.selectedList.type][draft.ui.selectedList.id].tasks.push(id);
+        }
+        // select new task
+        draft.ui.selectedTask = id;
+        //TODO: type inference for payloads
         break;
 
 

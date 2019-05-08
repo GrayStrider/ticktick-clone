@@ -4,9 +4,9 @@ import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/types/t
 export interface GlobalState {
   data: {
     tasks: TTasks
-    tags: TTags
-    lists: TLists,
-    custom: TCustomLists,
+    [ETabs.tags]: TTags
+    [ETabs.lists]: TLists,
+    [ETabs.custom]: TCustomLists,
     defaultLists: {
       inbox: {
         id: 'inbox',
@@ -24,7 +24,11 @@ export interface GlobalState {
   },
 
   ui: {
-    selectedList: object
+    selectedList: {
+      id: string
+      name: string
+      type: ETabs
+    }
     selectedTab: ETabs
     selectedTask: TTaskID | null
   },
