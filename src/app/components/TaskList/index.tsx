@@ -27,8 +27,7 @@ function TaskList(props) {
 }
 
 const mapStateToProps = (state) => ({
-  filteredTasks: getCurrentListTasks(state)
-
+  filteredTasks: getCurrentListTasks(state),
 });
 
 export default connect(mapStateToProps, null)(TaskList);

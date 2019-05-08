@@ -8,6 +8,7 @@ import { addTaskToList2, deleteTaskFromList } from '../../../actions';
 import { selectList, selectTab } from '../../Lists/actions';
 import { ETabs, TTags, TTaskID } from 'app/types/types';
 import { RootState } from 'app/reducers';
+import { getTaskTags } from 'app/components/Task/Tags/selectors';
 
 type Props = {
   taskID: TTaskID
@@ -100,12 +101,8 @@ interface DispatchFromProps {
   selectTab: typeof selectTab
 }
 
-const mapStateToProps = (state: RootState, ownProps: OwnProps) => ({
-  taskTags: pickBy(
-    state.ticktick.data.tags,
-    (tag) => tag.tasks.includes(
-      ownProps.taskID
-    )),
+const mapStateToProps = (state: RootState, props: OwnProps) => ({
+  taskTags: getTaskTags(state, props),
   tags: state.ticktick.data.tags
 });
 

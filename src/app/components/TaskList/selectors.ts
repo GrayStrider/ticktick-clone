@@ -1,15 +1,14 @@
 import { createSelector } from 'reselect';
-import { getData, getSelectedList, getTasks } from 'app/selectors-global';
+import { getTaskLists, getSelectedList, getTasks } from 'app/selectors-global';
 import { filter } from 'lodash';
-import { GlobalState } from 'app/types/GlobalState';
-import { IList, ITask, TTasks } from 'app/types/types';
+import { IList, TTasks } from 'app/types/types';
 
 export const getCurrentListTasks = createSelector(
-  getData,
+  getTaskLists,
   getSelectedList,
   getTasks,
   (
-    data: Pick<GlobalState, 'data'>,
+    data,
     selectedList: IList,
     tasks: TTasks) =>
     filter(tasks, (task) => (
