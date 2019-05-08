@@ -18,11 +18,14 @@ function Task(props) {
   //   // @ts-ignore
   //   inputRef.current.value = title;
   // }, []);
-  const debouncedFunction = debounce(() => {
-    console.log('debounced');
+  const delayedDispatch = debounce((value) => {
+    props.modifyTaskAction({
+      taskID: taskID,
+      data: { title: value }
+    });
   }, 1000, {maxWait: 2000});
+
   const handleKeyDown = (e) => {
-    debouncedFunction();
     if (e.key === 'Enter') {
       e.preventDefault();
       // @ts-ignore
@@ -33,11 +36,7 @@ function Task(props) {
   };
 
   const handleChange = (e) => {
-    // props.modifyTaskAction({
-    //   taskID: taskID,
-    //   data: { title: e.target.value }
-    // });
-    changeValue(e.target.value);
+    delayedDispatch(e.target.value);
   };
 
   return (
@@ -50,7 +49,7 @@ function Task(props) {
         spellCheck={false}
         defaultValue={title}
         // value={value}
-        // onChange={handleChange}
+        onChange={handleChange}
         onKeyDown={handleKeyDown}
         // id='editableTitle'
       />
