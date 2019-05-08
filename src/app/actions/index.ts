@@ -20,4 +20,4 @@ export const addTask = createStandardAction('ADD_TASK').map(
   })
 );
 
-export const testAction = (payload: string) => action('TEST', payload)
+export const testAction = () => action('TEST')

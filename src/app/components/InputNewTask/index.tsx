@@ -4,9 +4,8 @@ import { Icon, Input, Popup } from 'semantic-ui-react';
 import onClickOutside from 'react-onclickoutside';
 import { Wrapper } from './styles';
 import { InputButtonBar } from './inputButtonBar';
-import { addTask, TaskInput } from '../../actions/index';
+import { addTask, testAction } from '../../actions/index';
 import { EPriorities } from 'app/types/types';
-import { bindActionCreators } from 'redux';
 
 
 function InputNewTask(props) {
@@ -23,6 +22,7 @@ function InputNewTask(props) {
         title: inputValue,
         priority: EPriorities.None,
       });
+      props.testAction();
       changeInputValue('');
     }
   };
@@ -71,9 +71,10 @@ const mapStateToProps = state => ({
   selectedList: state.ticktick.ui.selectedList,
 });
 
-const dispatchProps = (dispatch) => bindActionCreators({
-  addTask: ({title, priority}:TaskInput) => addTask({title, priority})
-}, dispatch);
+const dispatchProps = {
+  testAction: testAction,
+  addTask
+}
 
 
 // @ts-ignore
