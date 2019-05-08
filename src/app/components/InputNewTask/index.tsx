@@ -4,7 +4,7 @@ import { Icon, Input, Popup } from 'semantic-ui-react';
 import onClickOutside from 'react-onclickoutside';
 import { Wrapper } from './styles';
 import { InputButtonBar } from './inputButtonBar';
-import { addTask, testAction } from '../../actions/index';
+import { addTask } from '../../actions/index';
 import { EPriorities } from 'app/types/types';
 
 
@@ -22,7 +22,6 @@ function InputNewTask(props) {
         title: inputValue,
         priority: EPriorities.None,
       });
-      props.testAction();
       changeInputValue('');
     }
   };
@@ -72,7 +71,6 @@ const mapStateToProps = state => ({
 });
 
 const dispatchProps = {
-  testAction: testAction,
   addTask
 }
 

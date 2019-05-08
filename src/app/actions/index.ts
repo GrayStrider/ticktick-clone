@@ -1,14 +1,5 @@
-import { action, createStandardAction } from 'typesafe-actions';
+import { createStandardAction } from 'typesafe-actions';
 import { ITask } from 'app/types/types';
-
-// export const ADD_TASK = 'ADD_TASK';
-//
-// export function addTask(payload) {
-//   return {
-//     type: ADD_TASK,
-//     payload,
-//   };
-// }
 
 export type TaskInput = Pick<ITask, 'title' | 'priority'>
 export const addTask = createStandardAction('ADD_TASK').map(
@@ -19,5 +10,3 @@ export const addTask = createStandardAction('ADD_TASK').map(
     }
   })
 );
-
-export const testAction = () => action('TEST')

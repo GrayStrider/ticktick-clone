@@ -4,14 +4,16 @@ import { Chance } from 'chance';
 import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/types/types';
 import GenerateMockData from 'app/utils/GenerateMockData';
 import { SELECT_LIST, SELECT_TAB } from 'app/components/Lists/actions';
-// import { ADD_TASK } from 'app/components/InputNewTask/actions';
 import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/actions';
-import {addTask} from 'app/actions/index';
+import { addTask } from 'app/actions/index';
 import { SELECT_TASK, TOGGLE_DONE } from 'app/components/Task/actions';
 import { SORT_LIST } from 'app/components/TaskList/TaskListHeader/actions';
 import { without } from 'lodash';
 import { ActionType, getType } from 'typesafe-actions';
 import * as todos from 'app/actions';
+// @ts-ignore
+import cuid from 'cuid';
+
 export type TodosAction = ActionType<typeof todos>;
 
 const chance = new Chance(Math.random);
@@ -71,30 +73,26 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction): Globa
         break;
 
       case getType(addTask):
-        console.log(action.payload)
-
-        // {
-      //   const date = new Date();
-      //   const time = date.getTime();
-      //   const guid = chance.guid();
-      //   // insert new task into database
-      //   draft.data.tasks[guid] = {
-      //     id: guid,
-      //     title: action.payload.title,
-      //     description: '',
-      //     priority: action.payload.priority,
-      //     completed: false,
-      //     timeCreated: time,
-      //     timeLastModified: time
-      //   };
-      //   // insert new task into currently selected list
-      //   draft.data
-      //     [action.payload.selectedList.type]
-      //     [action.payload.selectedList.id].tasks
-      //     .push(guid);
-      //   // select new task
-      //   draft.ui.selectedTask = guid;
-      // }
+        const date = new Date();
+        const time = date.getTime();
+        const id = cuid();
+        // insert new task into database
+        draft.data.tasks[id] = {
+          id: id,
+          title: action.payload.title,
+          description: '',
+          priority: action.payload.priority,
+          completed: false,
+          timeCreated: time,
+          timeLastModified: time,
+        };
+          // insert new task into currently selected list
+          draft.data
+            [action.payload.selectedList.type]
+            [action.payload.selectedList.id].tasks
+            .push(id);
+          // select new task
+          draft.ui.selectedTask = id;
         break;
 
 
@@ -142,15 +140,15 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction): Globa
         switch (action.payload.sortType) {
           case 'priority':
             draft.data
-                [action.payload.selectedList.type]
-                [action.payload.selectedList.id].tasks
-                .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].priority - draft.data.tasks[a].priority);
+              [action.payload.selectedList.type]
+              [action.payload.selectedList.id].tasks
+              .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].priority - draft.data.tasks[a].priority);
             break;
           case 'timeAdded':
             draft.data
-                [action.payload.selectedList.type]
-                [action.payload.selectedList.id].tasks
-                .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].timeCreated - draft.data.tasks[a].timeCreated);
+              [action.payload.selectedList.type]
+              [action.payload.selectedList.id].tasks
+              .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].timeCreated - draft.data.tasks[a].timeCreated);
             break;
         }
         break;
@@ -172,5 +170,6 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction): Globa
         break;
     }
   });
+
 
 export default ticktick;
