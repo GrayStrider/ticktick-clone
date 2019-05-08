@@ -9,7 +9,7 @@ import InputNewTask from '../InputNewTask';
 import TaskDetails from '../TaskDetails';
 import TaskListHeader from '../TaskList/TaskListHeader';
 
-function TickTick(props) {
+function TickTick() {
 
   return (
     <Wrapper>
@@ -42,10 +42,4 @@ function TickTick(props) {
   );
 }
 
-const mapStateToProps = state => ({
-});
-
-const mapDispatchToProps = dispatch => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TickTick);
+export default connect(null, null)(TickTick);

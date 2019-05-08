@@ -102,7 +102,6 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction) =>
         //TODO: type inference for payloads
         break;
 
-
       case MODIFY_TASK: {
         const date = new Date();
         draft.data.tasks[action.payload.taskID] = {
