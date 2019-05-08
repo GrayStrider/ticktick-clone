@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { TTaskID, TTasks } from 'app/types/types';
+import { getTasks } from 'app/selectors-global';
 
-const getTasks = (state) => state.ticktick.data.tasks;
 
 export const getCompleted = createSelector(
   getTasks,

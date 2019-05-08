@@ -5,6 +5,7 @@ import { selectTask } from './actions';
 import Checkbox from '../Checkbox';
 import { modifyTask } from '../../actions';
 import Tags from './Tags';
+import { getTitle } from 'app/components/Task/selectors';
 
 function Task(props) {
   const {
@@ -47,7 +48,7 @@ function Task(props) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  title: state.ticktick.data.tasks[ownProps.taskID].title,
+  title: getTitle(state, ownProps),
   taskIsSelected: state.ticktick.ui.selectedTask === ownProps.taskID,
 });
 
