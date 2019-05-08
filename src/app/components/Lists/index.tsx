@@ -7,6 +7,7 @@ import { selectList, selectTab } from './actions';
 import messages from './messages';
 import { ETabs, ICustomList, IList, ITag } from 'app/types/types';
 import { RootState } from 'app/reducers';
+import { getLists } from 'app/components/Lists/selectors';
 
 function Lists(props) {
   const {
@@ -54,12 +55,7 @@ function Lists(props) {
 const mapStateToProps = (state: RootState) => ({
   selectedTab: state.ticktick.ui.selectedTab,
   selectedList: state.ticktick.ui.selectedList,
-  lists: {
-    tags: state.ticktick.data.tags,
-    lists: state.ticktick.data.lists,
-    custom: state.ticktick.data.custom,
-    defaultLists: state.ticktick.defaultLists
-  }
+  lists: getLists(state)
 });
 
 const mapDispatchToProps = dispatch => ({
