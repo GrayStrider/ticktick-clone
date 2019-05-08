@@ -14,21 +14,22 @@ function InputNewTask(props) {
   InputNewTask.handleClickOutside = () => toggleButtonBar(false);
 
   const [buttonBarActive, toggleButtonBar] = React.useState(false);
-  const [inputValue, changeInputValue] = React.useState('');
+  // const [inputValue, changeInputValue] = React.useState('');
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       props.addTask({
-        title: inputValue,
+        title: event.target.value,
         priority: EPriorities.None,
       });
-      changeInputValue('');
+      // changeInputValue('');
+      event.target.value = '';
     }
   };
 
-  const handleChange = (event) => {
-    changeInputValue(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   changeInputValue(event.target.value);
+  // };
 
   return (
     <Wrapper buttonBarActive={buttonBarActive}>
@@ -36,9 +37,9 @@ function InputNewTask(props) {
            onClick={() => toggleButtonBar(true)}>
 
         <Input placeholder={placeholder}
-               value={inputValue}
+               // value={inputValue}
                onKeyDown={handleKeyDown}
-               onChange={handleChange}
+               // onChange={handleChange}
                fluid/>
 
       </div>
