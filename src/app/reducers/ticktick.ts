@@ -5,11 +5,11 @@ import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/types/t
 import GenerateMockData from 'app/utils/GenerateMockData';
 import { SELECT_LIST, SELECT_TAB } from 'app/components/Lists/actions';
 import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/actions';
-import { addTask } from 'app/actions/index';
+import { addTask, TaskInput } from 'app/actions/index';
 import { SELECT_TASK, TOGGLE_DONE } from 'app/components/Task/actions';
 import { SORT_LIST } from 'app/components/TaskList/TaskListHeader/actions';
 import { without } from 'lodash';
-import { ActionType, getType } from 'typesafe-actions';
+import { action, ActionType, createReducer, getType } from 'typesafe-actions';
 import * as todos from 'app/actions';
 // @ts-ignore
 import cuid from 'cuid';
@@ -86,6 +86,7 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction): Globa
           timeCreated: time,
           timeLastModified: time,
         };
+
           // insert new task into currently selected list
           draft.data
             [action.payload.selectedList.type]
@@ -93,6 +94,7 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction): Globa
             .push(id);
           // select new task
           draft.ui.selectedTask = id;
+          //TODO: type inference for payloads
         break;
 
 
@@ -170,6 +172,5 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction): Globa
         break;
     }
   });
-
 
 export default ticktick;
