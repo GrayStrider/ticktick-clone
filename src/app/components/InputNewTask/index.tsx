@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Form, Icon, Popup } from 'semantic-ui-react';
+import { Button, Form, Icon, Popup, Dropdown } from 'semantic-ui-react';
 import onClickOutside from 'react-onclickoutside';
 import { Wrapper } from './styles';
 import { InputButtonBar } from './inputButtonBar';
 import { addTask } from '../../actions/index';
 import { EPriorities } from 'app/types/types';
 import { SDropdown } from 'app/components/Dropdown/styles';
+import { DateTimeInput } from 'semantic-ui-calendar-react';
+
 
 
 function InputNewTask(props) {
@@ -16,6 +18,8 @@ function InputNewTask(props) {
 
   const [buttonBarActive, toggleButtonBar] = React.useState(false);
   const [selectedPriority, changeSelectedPriority] = React.useState(EPriorities.High);
+  const [dateTime, setDateTime] = React.useState('');
+  const [dateTimeMenuOpen, toggleDateTimeMenu] = React.useState(false)
 
   const handleSubmit = (event) => {
     const input = event.target.querySelector('input');
@@ -27,17 +31,6 @@ function InputNewTask(props) {
       input.value = '';
     }
   };
-
-  const options = [
-    {
-      key: 1,
-      text: '1'
-    },
-    {
-      key: 2,
-      text: '2'
-    }
-  ];
 
   let priorityOptions = [
     { key: EPriorities.High, text: 'High' },
@@ -66,16 +59,40 @@ function InputNewTask(props) {
       <InputButtonBar active={buttonBarActive}
                       className='inputButtonBar'>
 
-        <Popup trigger={<Icon name='calendar alternate outline'/>}
-               content='popup content'
-               on='click'
-               horizontalOffset={12}
-               verticalOffset={5}/>
-        {/*<SDropdown*/}
-        {/*icon={null}*/}
-        {/*options={options}*/}
-        {/*pointing='top right'*/}
-        {/*trigger={<Icon name='calendar alternate outline'/>}/>*/}
+        {/*<Popup trigger={<Icon name='calendar alternate outline'/>}*/}
+               {/*on='click'*/}
+               {/*horizontalOffset={12}*/}
+               {/*verticalOffset={5}>*/}
+        {/*<div>*/}
+          {/*{dateTime}*/}
+          {/*<DateTimeInput*/}
+            {/*inline*/}
+            {/*value={dateTime}*/}
+            {/*onChange={(e, {value}) => setDateTime(value)}/>*/}
+        {/*</div>*/}
+        {/*</Popup>*/}
+        <SDropdown
+          icon={null}
+          trigger={<Icon
+            onClick={() => toggleDateTimeMenu(!dateTimeMenuOpen)}
+            name='calendar alternate outline'/>}
+          pointing='top right'>
+          <Dropdown.Menu open={dateTimeMenuOpen}>
+            <Dropdown.Item>
+              <div>
+                {dateTime}
+                <DateTimeInput
+                  closable
+                  inline
+                  value={dateTime}
+                  onChange={(e, { value }) => {
+                    setDateTime(value)
+                    toggleDateTimeMenu(!dateTimeMenuOpen)
+                  }}/>
+              </div>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </SDropdown>
 
         <SDropdown
           icon={null}
