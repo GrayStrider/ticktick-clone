@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { defaultAction } from './actions';
 import { Wrapper } from './styles';
 
 function NewComponent(props) {
@@ -12,12 +11,16 @@ function NewComponent(props) {
   );
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  defaultState: state.default.defaultStateEntry
+const mapStateToProps = (state, props) => ({
+
 });
 
-const mapDispatchToProps = dispatch => ({
-  defaultActionAction: (payload) => dispatch(defaultAction(payload)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   defaultActionAction: (payload) => dispatch(defaultAction(payload)),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewComponent);
+const dispatchProps = {
+
+}
+
+export default connect(mapStateToProps, dispatchProps)(NewComponent);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Form, Icon, Input, Popup } from 'semantic-ui-react';
+import { Form, Icon, Input, Menu, Popup } from 'semantic-ui-react';
 import onClickOutside from 'react-onclickoutside';
 import { Wrapper } from './styles';
 import { InputButtonBar } from './inputButtonBar';
@@ -24,6 +24,8 @@ function InputNewTask(props) {
     input.value = '';
 
   };
+
+  const priorityMenuContent = <Menu></Menu>
   return (
     <Wrapper buttonBarActive={buttonBarActive}>
       <div role='presentation'
@@ -39,19 +41,18 @@ function InputNewTask(props) {
       <InputButtonBar active={buttonBarActive}
                       className='inputButtonBar'>
 
-        <Popup trigger={
-
-          <Icon name='calendar alternate outline'/>
-        }
+        <Popup trigger={<Icon name='calendar alternate outline'/>}
                content='popup content'
                on='click'
                horizontalOffset={12}
-               verticalOffset={5}
+               verticalOffset={5}/>
 
-        />
+        <Popup trigger={<Icon name='exclamation circle'/>}
+               content='popup content'
+               on='click'
+               horizontalOffset={11}
+               verticalOffset={5}/>
 
-
-        <Icon name='exclamation circle'/>
         <Icon name='folder outline'/>
       </InputButtonBar>
     </Wrapper>

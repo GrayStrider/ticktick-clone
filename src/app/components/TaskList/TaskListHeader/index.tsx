@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Dropdown, Header, Icon } from 'semantic-ui-react';
 import { Wrapper } from './styles';
 import { sortList } from 'app/actions/index';
+import { SDropdown } from 'app/components/Dropdown/styles';
 
 function TaskListHeader(props) {
   const {selectedList} = props
@@ -33,7 +34,7 @@ function TaskListHeader(props) {
   return (
     <Wrapper>
       <Header inverted>{selectedList.name}</Header>
-      <Dropdown
+      <SDropdown
         icon={null}
         options={options}
         pointing='top right'

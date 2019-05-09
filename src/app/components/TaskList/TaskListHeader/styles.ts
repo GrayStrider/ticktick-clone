@@ -10,18 +10,5 @@ export const Wrapper = styled.span`
     margin: 0;
     flex: auto;
   }
-  
-  .dropdown {
-    height: 0; // adds some pixels
-    & .menu {
-      border-radius: 0 !important;
-      margin-top: 2em !important;
-      & * {color: black;}
-      
-      &::after {
-        right: 0.9em !important;
-      }
-    }
-  }
   ;
 `;

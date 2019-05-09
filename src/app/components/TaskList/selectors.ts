@@ -33,9 +33,6 @@ export const getCurrentListTasks2 = createSelector(
         filtered[taskID] = tasks[taskID];
       }
     );
-    console.log(JSON.stringify(
-      filtered
-    ));
     return filtered;
   }
 )
