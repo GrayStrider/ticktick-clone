@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Form, Icon } from 'semantic-ui-react';
+import { Form, Icon, Popup } from 'semantic-ui-react';
 import onClickOutside from 'react-onclickoutside';
 import { Wrapper } from './styles';
 import { InputButtonBar } from './inputButtonBar';
@@ -19,12 +19,13 @@ function InputNewTask(props) {
 
   const handleSubmit = (event) => {
     const input = event.target.querySelector('input');
-    props.addTask({
-      title: input.value,
-      priority: selectedPriority
-    });
-    input.value = '';
-
+    if (input.value !== '') {
+      props.addTask({
+        title: input.value,
+        priority: selectedPriority
+      });
+      input.value = '';
+    }
   };
 
   const options = [
@@ -65,16 +66,16 @@ function InputNewTask(props) {
       <InputButtonBar active={buttonBarActive}
                       className='inputButtonBar'>
 
-        {/*<Popup trigger={<Icon name='calendar alternate outline'/>}*/}
-        {/*content='popup content'*/}
-        {/*on='click'*/}
-        {/*horizontalOffset={12}*/}
-        {/*verticalOffset={5}/>*/}
-        <SDropdown
-          icon={null}
-          options={options}
-          pointing='top right'
-          trigger={<Icon name='calendar alternate outline'/>}/>
+        <Popup trigger={<Icon name='calendar alternate outline'/>}
+               content='popup content'
+               on='click'
+               horizontalOffset={12}
+               verticalOffset={5}/>
+        {/*<SDropdown*/}
+        {/*icon={null}*/}
+        {/*options={options}*/}
+        {/*pointing='top right'*/}
+        {/*trigger={<Icon name='calendar alternate outline'/>}/>*/}
 
         <SDropdown
           icon={null}

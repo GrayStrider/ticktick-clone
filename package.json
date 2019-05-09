@@ -79,6 +79,7 @@
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "reselect": "^4.0.0",
+    "semantic-ui-calendar-react": "^0.15.0",
     "semantic-ui-react": "^0.86.0",
     "styled-components": "^4.2.0",
     "typesafe-actions": "^4.2.0"
