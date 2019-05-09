@@ -18,8 +18,4 @@ export const InputButtonBar = styled.span<{ active: boolean; }>`
     z-index: 998;
   }
   
-  .menu {
-    right: -6px !important;
-  }
-  
 `

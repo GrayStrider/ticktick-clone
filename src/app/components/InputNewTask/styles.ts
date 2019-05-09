@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { EPriorities } from 'app/types/types';
 
 export const Wrapper = styled.span<{
-  buttonBarActive: boolean
+  buttonBarActive: boolean,
 }>`
   padding: 0.5em 1em 0.5em 1em !important;
   
