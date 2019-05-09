@@ -10,3 +10,10 @@ export const addTask = createStandardAction('ADD_TASK').map(
   })
 );
 
+export const sortList = createStandardAction('SORT_LIST').map(
+  (sortType: string): {payload: {sortType: string}} => ({
+    payload: {
+      sortType
+    }
+  })
+)

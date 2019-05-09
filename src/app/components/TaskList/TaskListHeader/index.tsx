@@ -2,11 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Dropdown, Header, Icon } from 'semantic-ui-react';
-import { sortListAction } from './actions';
 import { Wrapper } from './styles';
+import { sortList } from 'app/actions/index';
 
 function TaskListHeader(props) {
-  const {sortList, selectedList} = props
+  const {selectedList} = props
 
   const sortDropdownTrigger =
     <Icon name='sort amount up'/>
@@ -17,10 +17,7 @@ function TaskListHeader(props) {
       icon: 'sort amount down',
       active: false,
       onClick: () => {
-        sortList({
-          selectedList: selectedList,
-          sortType: 'priority'
-        })
+        props.sortList('priority')
       }
     },
     { key: 'timeAdded',
@@ -28,10 +25,7 @@ function TaskListHeader(props) {
       icon: 'sort amount down',
       active: false,
       onClick: () => {
-        sortList({
-          selectedList: selectedList,
-          sortType: 'timeAdded'
-        })
+        props.sortList('timeAdded')
       }
     }
   ]
@@ -49,13 +43,12 @@ function TaskListHeader(props) {
 }
 
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   selectedList: state.ticktick.ui.selectedList,
 });
 
-const mapDispatchToProps = dispatch => ({
-  sortList: ({selectedList, sortType}) =>
-    dispatch(sortListAction({selectedList, sortType})),
-});
+const dispatchProps = {
+  sortList
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskListHeader);
+export default connect(mapStateToProps, dispatchProps)(TaskListHeader);

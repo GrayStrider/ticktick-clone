@@ -23,7 +23,7 @@ function Task(props) {
       taskID: taskID,
       data: { title: value }
     });
-  }, 1000, {maxWait: 2000});
+  }, 2000, {maxWait: 3000});
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
