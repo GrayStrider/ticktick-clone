@@ -142,20 +142,19 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction) =>
          * }
          *
          **/
-        // switch (action.payload.sortType) {
-        //   case 'priority':
-        //     draft.data
-        //       [action.payload.selectedList.type]
-        //       [action.payload.selectedList.id].tasks
-        //       .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].priority - draft.data.tasks[a].priority);
-        //     break;
-        //   case 'timeAdded':
-        //     draft.data
-        //       [action.payload.selectedList.type]
-        //       [action.payload.selectedList.id].tasks
-        //       .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].timeCreated - draft.data.tasks[a].timeCreated);
-        //     break;
-        // }
+        switch (action.payload.sortType) {
+          case 'priority':
+            // @ts-ignore
+            console.log('priority');
+            draft.data[draft.ui.selectedList.type][draft.ui.selectedList.id].tasks
+              .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].priority - draft.data.tasks[a].priority);
+            break;
+          case 'timeAdded':
+            // @ts-ignore
+            draft.data[draft.ui.selectedList.type][draft.ui.selectedList.id].tasks
+              .sort((a: TTaskID, b: TTaskID) => draft.data.tasks[b].timeCreated - draft.data.tasks[a].timeCreated);
+            break;
+        }
         break;
 
       case DELETE_TASK_FROM_LIST:

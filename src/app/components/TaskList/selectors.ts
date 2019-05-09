@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { getTaskLists, getSelectedList, getTasks } from 'app/selectors-global';
-import { filter } from 'lodash';
+import { filter, forEach } from 'lodash';
 import { IList, TTasks } from 'app/types/types';
 
 export const getCurrentListTasks = createSelector(
@@ -17,3 +17,15 @@ export const getCurrentListTasks = createSelector(
       )
     )
 );
+
+const mapStateToProps = (state) => ({
+  filteredTasks: function filteredTasks() {
+    const filtered = {};
+    forEach(state.ticktick.data
+        [state.ticktick.ui.selectedList.type]
+        [state.ticktick.ui.selectedList.id].tasks,
+      (taskID) => {filtered[taskID] =
+        state.ticktick.data.tasks[taskID];}
+    );
+    return filtered;
+  }})
