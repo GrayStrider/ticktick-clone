@@ -16,7 +16,7 @@ export const Wrapper = styled.span<IWrapper>`
     margin-right: 0.8em;
     
     & *:before {
-    border: 1px solid ${props => ['gray', 'lightblue', 'yellow', 'red'][props.completed ? 3 : props.priority]} !important;
+    border: 1px solid ${props => ['gray', 'lightblue', 'yellow', 'red'][props.completed ? 0 : props.priority]} !important;
     
     border-radius: 2px !important;
     background-color: black !important;

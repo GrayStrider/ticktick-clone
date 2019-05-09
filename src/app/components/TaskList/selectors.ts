@@ -18,14 +18,24 @@ export const getCurrentListTasks = createSelector(
     )
 );
 
-const mapStateToProps = (state) => ({
-  filteredTasks: function filteredTasks() {
-    const filtered = {};
-    forEach(state.ticktick.data
-        [state.ticktick.ui.selectedList.type]
-        [state.ticktick.ui.selectedList.id].tasks,
-      (taskID) => {filtered[taskID] =
-        state.ticktick.data.tasks[taskID];}
+let filtered = {};
+export const getCurrentListTasks2 = createSelector(
+  getTaskLists,
+  getSelectedList,
+  getTasks,
+  (
+    data,
+    selectedList: IList,
+    tasks: TTasks) => {
+    filtered = {};
+    forEach(data[selectedList.type][selectedList.id].tasks,
+      (taskID) => {
+        filtered[taskID] = tasks[taskID];
+      }
     );
+    console.log(JSON.stringify(
+      filtered
+    ));
     return filtered;
-  }})
+  }
+)

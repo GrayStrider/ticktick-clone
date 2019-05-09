@@ -5,7 +5,7 @@ import { map} from 'lodash';
 import { Wrapper } from './styles';
 import Task from '../Task';
 import Scrollbar from '../Scrollbar';
-import { getCurrentListTasks } from 'app/components/TaskList/selectors';
+import { getCurrentListTasks, getCurrentListTasks2 } from 'app/components/TaskList/selectors';
 
 function TaskList(props) {
   const { filteredTasks } = props;
@@ -27,7 +27,8 @@ function TaskList(props) {
 }
 
 const mapStateToProps = (state) => ({
-  filteredTasks: getCurrentListTasks(state),
+  filteredTasks: getCurrentListTasks2(state),
+  filteredTasks2: getCurrentListTasks2(state)
 });
 
 export default connect(mapStateToProps, null)(TaskList);
