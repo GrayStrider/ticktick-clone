@@ -19,7 +19,7 @@ function InputNewTask(props) {
   const [buttonBarActive, toggleButtonBar] = React.useState(false);
   const [selectedPriority, changeSelectedPriority] = React.useState(EPriorities.High);
   const [dateTime, setDateTime] = React.useState('');
-  const [dateTimeMenuOpen, toggleDateTimeMenu] = React.useState(false)
+  const [dueDateTimeMenuOpen, toggleDueDateTimeMenu] = React.useState(false)
 
   const handleSubmit = (event) => {
     const input = event.target.querySelector('input');
@@ -58,26 +58,13 @@ function InputNewTask(props) {
 
       <InputButtonBar active={buttonBarActive}
                       className='inputButtonBar'>
-
-        {/*<Popup trigger={<Icon name='calendar alternate outline'/>}*/}
-               {/*on='click'*/}
-               {/*horizontalOffset={12}*/}
-               {/*verticalOffset={5}>*/}
-        {/*<div>*/}
-          {/*{dateTime}*/}
-          {/*<DateTimeInput*/}
-            {/*inline*/}
-            {/*value={dateTime}*/}
-            {/*onChange={(e, {value}) => setDateTime(value)}/>*/}
-        {/*</div>*/}
-        {/*</Popup>*/}
         <SDropdown
           icon={null}
           trigger={<Icon
-            onClick={() => toggleDateTimeMenu(!dateTimeMenuOpen)}
+            onClick={() => toggleDueDateTimeMenu(!dueDateTimeMenuOpen)}
             name='calendar alternate outline'/>}
           pointing='top right'>
-          <Dropdown.Menu open={dateTimeMenuOpen}>
+          <Dropdown.Menu open={dueDateTimeMenuOpen}>
             <Dropdown.Item>
               <div>
                 {dateTime}
@@ -87,7 +74,7 @@ function InputNewTask(props) {
                   value={dateTime}
                   onChange={(e, { value }) => {
                     setDateTime(value)
-                    toggleDateTimeMenu(!dateTimeMenuOpen)
+                    toggleDueDateTimeMenu(!dueDateTimeMenuOpen)
                   }}/>
               </div>
             </Dropdown.Item>
