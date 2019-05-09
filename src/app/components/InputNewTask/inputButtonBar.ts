@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const InputButtonBar = styled.span<{
-  active: boolean;
-}>`
+export const InputButtonBar = styled.span<{ active: boolean; }>`
   display: ${props => props.active ? 'flex' : 'none'};
   position: relative;
   float: right;
@@ -18,6 +16,10 @@ export const InputButtonBar = styled.span<{
   .icon {
     cursor: pointer;
     z-index: 998;
+  }
+  
+  .menu {
+    right: -6px !important;
   }
   
 `

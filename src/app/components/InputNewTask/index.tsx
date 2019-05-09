@@ -6,6 +6,7 @@ import { Wrapper } from './styles';
 import { InputButtonBar } from './inputButtonBar';
 import { addTask } from '../../actions/index';
 import { EPriorities } from 'app/types/types';
+import { SDropdown } from 'app/components/Dropdown/styles';
 
 
 function InputNewTask(props) {
@@ -25,7 +26,20 @@ function InputNewTask(props) {
 
   };
 
-  const priorityMenuContent = <Menu></Menu>
+  const options = [
+    {key: 1,
+    text: '1'},
+    {key: 2,
+    text: '2'}
+  ]
+
+  const priorityOptions = [
+    {key: 1, text: 'High'},
+    {key: 2, text: 'Medium'},
+    {key: 3, text: 'Low'},
+    {key: 4, text: 'None'},
+  ]
+
   return (
     <Wrapper buttonBarActive={buttonBarActive}>
       <div role='presentation'
@@ -41,17 +55,22 @@ function InputNewTask(props) {
       <InputButtonBar active={buttonBarActive}
                       className='inputButtonBar'>
 
-        <Popup trigger={<Icon name='calendar alternate outline'/>}
-               content='popup content'
-               on='click'
-               horizontalOffset={12}
-               verticalOffset={5}/>
+        {/*<Popup trigger={<Icon name='calendar alternate outline'/>}*/}
+               {/*content='popup content'*/}
+               {/*on='click'*/}
+               {/*horizontalOffset={12}*/}
+               {/*verticalOffset={5}/>*/}
+        <SDropdown
+          icon={null}
+          options={options}
+          pointing='top right'
+          trigger={<Icon name='calendar alternate outline'/>}/>
 
-        <Popup trigger={<Icon name='exclamation circle'/>}
-               content='popup content'
-               on='click'
-               horizontalOffset={11}
-               verticalOffset={5}/>
+        <SDropdown
+          icon={null}
+          options={priorityOptions}
+          pointing='top right'
+          trigger={<Icon name='exclamation circle'/>}/>
 
         <Icon name='folder outline'/>
       </InputButtonBar>
