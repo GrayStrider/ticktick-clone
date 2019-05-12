@@ -14,7 +14,7 @@
     "noImplicitReturns": true,
     "strict": true,
     "outDir": "build",
-    "lib": ["es6", "es7", "dom"],
+    "lib": ["es6", "es7", "dom", "es2017"],
     "baseUrl": "src",
     "paths": {
       "app/*": ["./app/*"]
