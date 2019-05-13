@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Icon, Image } from 'semantic-ui-react';
+import { Button, Grid, Icon, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 import { Wrapper } from './styles';
@@ -8,8 +8,10 @@ import TaskList from '../TaskList';
 import InputNewTask from '../InputNewTask';
 import TaskDetails from '../TaskDetails';
 import TaskListHeader from '../TaskList/TaskListHeader';
+import { ping } from 'app/actions/pingPong';
 
-function TickTick() {
+function TickTick(props) {
+  const {ping} = props;
 
   return (
     <Wrapper>
@@ -19,6 +21,7 @@ function TickTick() {
           <Grid.Row className='account_pane'>
             <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' avatar/>
             <span>Username</span>
+            <Button onClick={ping}>Ping</Button>
             <Icon name='search'/>
             <Icon name='mail'/>
           </Grid.Row>
@@ -42,4 +45,8 @@ function TickTick() {
   );
 }
 
-export default connect(null, null)(TickTick);
+const dispatchProps = {
+      ping
+}
+
+export default connect(null, dispatchProps)(TickTick);
