@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div<{
   taskIsSelected: boolean;
 }>`
-  padding: 0.5em 1em 0.5em 1em;
+  padding: 0.6em 1em 0.6em 1em;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
