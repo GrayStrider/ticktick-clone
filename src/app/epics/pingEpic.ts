@@ -26,10 +26,8 @@ export const pingEpic2: Epic<Action<any>, Action<any>, void, any> = (action$, st
       .pipe(
         tap(() => console.log('before emition')),
         delay(2000),
-        repeat(3)
-      )
-      .pipe(
-        repeat(3)
+        repeat(3),
+        tap(() => console.log('Emit: ')),
       )
     )
   ));
