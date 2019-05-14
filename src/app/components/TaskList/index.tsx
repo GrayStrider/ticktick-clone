@@ -31,19 +31,15 @@ function TaskList(props) {
       (task) => <Task taskID={task.id} key={task.id}/>);
   };
 
-  const value = useObservable(interval(1000), 0);
+  // const value = useObservable(interval(1000), 0);
 
   const ListWrapper = <>
-    {/*{*/}
-    {/*  map(filteredTasks,*/}
-    {/*    (task) => (*/}
-    {/*      <Task taskID={task.id} key={task.id}/>*/}
-    {/*    ))*/}
-    {/*}*/}
     {
-      value
+      map(filteredTasks,
+        (task) => (
+          <Task taskID={task.id} key={task.id}/>
+        ))
     }
-
   </>;
   return (
     <Wrapper>

@@ -1,4 +1,4 @@
-import { delay, flatMap, mapTo, tap } from 'rxjs/operators';
+import { delay, exhaustMap, flatMap, ignoreElements, mapTo, takeLast, takeUntil, tap } from 'rxjs/operators';
 import { combineLatest, concat, merge, timer } from 'rxjs';
 import { Action, getType } from 'typesafe-actions';
 import { ping, pong } from 'app/actions/pingPong';
@@ -18,11 +18,12 @@ import { of } from 'rxjs';
  * - order of delay/repeat matters
  * - consecutive actions in concat
  * - concat: consecutive, merge: same time
+ * - ignoreElements for pure console.log, loops and hangs otherwise
  */
 
 export const pingEpic2: Epic<Action<any>, Action<any>, void, any> = (action$, state$) => action$.pipe(
   ofType(getType(ping)),
-  flatMap(action => concat(
+  exhaustMap(action => concat(
 
     of({ type: 'TEST2' }).pipe(
         tap(() => console.log('before emition')),
@@ -34,13 +35,13 @@ export const pingEpic2: Epic<Action<any>, Action<any>, void, any> = (action$, st
         delay(2000)
       )
     )
-  ));
+  )
+);
 
 export const pingEpic: Epic<Action<any>, Action<any>, void, any> = (action$, state$) => action$.pipe(
   ofType(getType(pong)),
-  mapTo(
-    {type: 'END'}
-  )
+  tap(() => console.log('test')),
+  ignoreElements()
 );
 
 ////////////////////////////////////////////////////
