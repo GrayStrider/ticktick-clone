@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import { RootState } from './state';
-import { todoReducer } from './todos';
 import ticktick from 'app/reducers/ticktick';
 
 export { RootState };
