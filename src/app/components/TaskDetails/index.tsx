@@ -5,6 +5,7 @@ import { Wrapper } from './styles';
 import Checkbox from '../Checkbox';
 import Tags from './Tags'
 import { TTaskID, TTasks } from 'app/types/types';
+import * as moment from 'moment';
 
 type Props = {
   selectedTaskID: TTaskID,
@@ -14,6 +15,15 @@ type Props = {
 const TaskDetails: React.FC<any> = (props: Props) => {
   const { selectedTaskID, tasks } = props;
 
+  let timeDateCreated, timeDateLastModified = '';
+  if (selectedTaskID) {
+    timeDateCreated =
+      moment.unix(tasks[selectedTaskID].timeCreated  / 1000)
+        .format("dddd, MMMM Do YYYY, h:mm:ss a")
+    timeDateLastModified =
+      moment.unix(tasks[selectedTaskID].timeLastModified / 1000)
+        .format("dddd, MMMM Do YYYY, h:mm:ss a")
+  }
   return (
     <Wrapper>
       {selectedTaskID ?
@@ -30,9 +40,9 @@ const TaskDetails: React.FC<any> = (props: Props) => {
           </Form>
           <Tags taskID={selectedTaskID}/>
           <hr/>
-          {tasks[selectedTaskID].timeCreated}
+          Created: {timeDateCreated}
           <hr/>
-          {tasks[selectedTaskID].timeLastModified}
+          Modified: {timeDateLastModified}
         </div>
         : 'Please, select a task from the list.'
       }

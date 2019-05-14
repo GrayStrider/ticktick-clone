@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-   //rtest
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
