@@ -1,4 +1,4 @@
-import { delay, flatMap, mapTo, repeat, tap } from 'rxjs/operators';
+import { delay, endWith, flatMap, mapTo, repeat, tap } from 'rxjs/operators';
 import { concat } from 'rxjs';
 import { Action, getType } from 'typesafe-actions';
 import { ping, pong } from 'app/actions/pingPong';
@@ -22,12 +22,15 @@ import { of } from 'rxjs';
 export const pingEpic2: Epic<Action<any>, Action<any>, void, any> = (action$, state$) => action$.pipe(
   ofType(getType(ping)),
   flatMap(action => concat(
-    of({ type: 'TEST2' }).pipe(
-      tap(() => console.log('before emition')),
-      delay(2000))
-      .pipe(repeat(3)
+    of({ type: 'TEST2' })
+      .pipe(
+        tap(() => console.log('before emition')),
+        delay(2000),
+        repeat(3)
+      )
+      .pipe(
+        repeat(3)
       )
     )
-  )
-);
+  ));
 
