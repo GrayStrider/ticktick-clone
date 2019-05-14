@@ -27,9 +27,12 @@ function TaskList(props) {
   const { filteredTasks } = props;
 
   const asyncFiltered = async () => {
+
     return await map(filteredTasks,
       (task) => <Task taskID={task.id} key={task.id}/>);
   };
+
+  const promise  = new Promise(asyncFiltered) //doest work. Go to sleep
 
   // const value = useObservable(interval(1000), 0);
 
