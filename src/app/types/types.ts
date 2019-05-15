@@ -14,6 +14,7 @@ export interface ITask {
   readonly timeCreated: number
   // time in seconds
   timeLastModified: number
+  completedAt: number
 }
 
 // -- Priorities

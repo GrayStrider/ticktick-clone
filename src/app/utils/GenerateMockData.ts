@@ -23,7 +23,8 @@ export default function generateMockData(
         EPriorities.None]),
       completed: chance.weighted([true, false], [1, 5]),
       timeCreated: time,
-      timeLastModified: time
+      timeLastModified: time,
+      completedAt: 0
 
     };
   }

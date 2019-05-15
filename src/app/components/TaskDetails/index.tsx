@@ -15,12 +15,15 @@ type Props = {
 const TaskDetails: React.FC<any> = (props: Props) => {
   const { selectedTaskID, tasks } = props;
 
-  let timeDateCreated, timeDateLastModified = '';
+  let
+    timeCreated,
+    timeLastModified = '';
+
   if (selectedTaskID) {
-    timeDateCreated =
+    timeCreated =
       moment.unix(tasks[selectedTaskID].timeCreated  / 1000)
         .format("dddd, MMMM Do YYYY, h:mm:ss a")
-    timeDateLastModified =
+    timeLastModified =
       moment.unix(tasks[selectedTaskID].timeLastModified / 1000)
         .format("dddd, MMMM Do YYYY, h:mm:ss a")
   }
@@ -40,9 +43,16 @@ const TaskDetails: React.FC<any> = (props: Props) => {
           </Form>
           <Tags taskID={selectedTaskID}/>
           <hr/>
-          Created: {timeDateCreated}
+          Created: {timeCreated}
           <hr/>
-          Modified: {timeDateLastModified}
+          Modified: {timeLastModified}
+          <hr/>
+          {
+            tasks[selectedTaskID].completedAt ?
+              `Completed at:
+              ${moment.unix(tasks[selectedTaskID].completedAt / 1000)
+                .format("dddd, MMMM Do YYYY, h:mm:ss a")}` : null
+          }
         </div>
         : 'Please, select a task from the list.'
       }

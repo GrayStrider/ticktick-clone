@@ -67,13 +67,14 @@ export const initialState: GlobalState = {
 
 const ticktick = (state: GlobalState = initialState, action: TodosAction) =>
   produce(state, draft => {
+    let date = new Date();
+
     switch (action.type) {
       case SELECT_TAB:
         draft.ui.selectedTab = action.payload;
         break;
 
       case getType(addTask):
-        const date = new Date();
         const time = date.getTime();
         const id = cuid();
         // insert new task into database
@@ -84,7 +85,8 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction) =>
           priority: action.payload.priority,
           completed: false,
           timeCreated: time,
-          timeLastModified: time
+          timeLastModified: time,
+          completedAt: 0
         };
 
         // insert new task into currently selected list
@@ -102,7 +104,6 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction) =>
         break;
 
       case MODIFY_TASK: {
-        const date = new Date();
         draft.data.tasks[action.payload.taskID] = {
           ...draft.data.tasks[action.payload.taskID],
           ...action.payload.data,
@@ -114,6 +115,9 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction) =>
       case TOGGLE_DONE:
         draft.data.tasks[action.payload].completed =
           !draft.data.tasks[action.payload].completed;
+        draft.data.tasks[action.payload].completedAt ?
+          draft.data.tasks[action.payload].completedAt = 0 :
+          draft.data.tasks[action.payload].completedAt = date.getTime()
         break;
 
       case SELECT_TASK:
