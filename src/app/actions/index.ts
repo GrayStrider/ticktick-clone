@@ -17,3 +17,5 @@ export const sortList = createStandardAction('SORT_LIST').map(
     }
   })
 )
+
+export const toggleMenu = createStandardAction('TOGGLE_MENU')<string>();

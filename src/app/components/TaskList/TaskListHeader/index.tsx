@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import { Dropdown, Header, Icon } from 'semantic-ui-react';
 import { Wrapper } from './styles';
-import { sortList } from 'app/actions/index';
+import { sortList, toggleMenu } from 'app/actions/index';
 import { SDropdown } from 'app/components/Dropdown/styles';
 
 function TaskListHeader(props) {
-  const {selectedList} = props
+  const {selectedList, toggleMenu} = props
 
   const sortDropdownTrigger =
     <Icon name='sort amount up'/>
@@ -33,7 +33,9 @@ function TaskListHeader(props) {
 
   return (
     <Wrapper>
-      <Icon name='bars'/>
+      <Icon
+        onClick={() => toggleMenu()}
+        name='bars'/>
       <Header inverted>{selectedList.name}</Header>
       <SDropdown
         icon={null}
@@ -50,7 +52,8 @@ const mapStateToProps = (state) => ({
 });
 
 const dispatchProps = {
-  sortList
+  sortList,
+  toggleMenu
 }
 
 export default connect(mapStateToProps, dispatchProps)(TaskListHeader);
