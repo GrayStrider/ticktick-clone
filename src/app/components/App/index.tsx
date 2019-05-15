@@ -9,26 +9,30 @@ import InputNewTask from '../InputNewTask';
 import TaskDetails from '../TaskDetails';
 import TaskListHeader from '../TaskList/TaskListHeader';
 import { ping } from 'app/actions/pingPong';
-import {throttle} from 'lodash'
+import { throttle } from 'lodash';
 
 function TickTick(props) {
-  const {ping} = props;
+  const { ping } = props;
+
+  const AccountPane =
+    <Grid.Row className='account_pane'>
+      <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' avatar/>
+      <span>Username</span>
+
+      {/*<Button onClick={throttle(() => ping(), 500, {leading: true})}>Ping</Button>*/}
+
+      <Icon name='search'/>
+      <Icon name='mail'/>
+    </Grid.Row>
+
 
   return (
     <Wrapper>
       <Grid columns={3}>
         <Grid.Column
           className='left'>
-          <Grid.Row className='account_pane'>
-            <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' avatar/>
-            <span>Username</span>
-            <Button onClick={throttle(() => ping(), 500, {leading: true})}>Ping</Button>
-            <Icon name='search'/>
-            <Icon name='mail'/>
-          </Grid.Row>
-
+          {AccountPane}
           <Lists/>
-
         </Grid.Column>
 
         <Grid.Column className='center'>
@@ -47,7 +51,7 @@ function TickTick(props) {
 }
 
 const dispatchProps = {
-      ping
-}
+  ping
+};
 
 export default connect(null, dispatchProps)(TickTick);

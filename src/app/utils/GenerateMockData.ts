@@ -2,7 +2,6 @@ import { Chance } from 'chance';
 import { EPriorities, ETabs, TLists, TTags, TTasks } from 'app/types/types';
 // @ts-ignore
 import cuid from 'cuid'
-
 const MOCK_TASKS_AMOUNT = 1000;
 const chance = new Chance(Math.random);
 
