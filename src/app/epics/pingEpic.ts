@@ -4,6 +4,7 @@ import { Action, getType } from 'typesafe-actions';
 import { ping, pong } from 'app/actions/pingPong';
 import { Epic, ofType } from 'redux-observable';
 import { of } from 'rxjs';
+import { toggleMenu } from 'app/actions/index';
 
 // export const pingEpic: Epic<Action<any>, Action<any>, void, any> = (action$, state$) => action$.pipe(
 //   ofType(getType(ping)),
@@ -42,6 +43,11 @@ export const pingEpic: Epic<Action<any>, Action<any>, void, any> = (action$, sta
   ofType(getType(pong)),
   tap(() => console.log('test')),
   ignoreElements()
+);
+
+export const closeMenuOnSelect: Epic<Action<any>, Action<any>, void, any> = (action$, state$) => action$.pipe(
+  ofType("SELECT_LIST"),
+  mapTo({type: getType(toggleMenu)})
 );
 
 ////////////////////////////////////////////////////

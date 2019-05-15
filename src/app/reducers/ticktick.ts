@@ -5,7 +5,7 @@ import { ETabs, TCustomLists, TLists, TTags, TTaskID, TTasks } from 'app/types/t
 import GenerateMockData from 'app/utils/GenerateMockData';
 import { SELECT_LIST, SELECT_TAB } from 'app/components/Lists/actions';
 import { ADD_TASK_TO_LIST, DELETE_TASK_FROM_LIST, MODIFY_TASK } from 'app/actions';
-import { addTask, sortList } from 'app/actions/index';
+import { addTask, sortList, toggleMenu } from 'app/actions/index';
 import { SELECT_TASK, TOGGLE_DONE } from 'app/components/Task/actions';
 import { without } from 'lodash';
 import { ActionType, getType } from 'typesafe-actions';
@@ -61,7 +61,8 @@ export const initialState: GlobalState = {
 
     },
     selectedTab: ETabs.custom,
-    selectedTask: null
+    selectedTask: null,
+    menuOpen: false
   }
 };
 
@@ -102,6 +103,10 @@ const ticktick = (state: GlobalState = initialState, action: TodosAction) =>
         draft.ui.selectedTask = id;
         //TODO: type inference for payloads
         break;
+
+      case getType(toggleMenu):
+        draft.ui.menuOpen = !draft.ui.menuOpen
+        break
 
       case MODIFY_TASK: {
         draft.data.tasks[action.payload.taskID] = {
