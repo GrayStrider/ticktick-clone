@@ -11,6 +11,24 @@ import AccountPane from '../AccountPane';
 import TaskListHeader from '../TaskList/TaskListHeader';
 import { ping } from 'app/actions/pingPong';
 import { throttle } from 'lodash';
+import onClickOutside from "react-onclickoutside";
+
+let ColumnLeft = (props) => {
+  // @ts-ignore
+  ColumnLeft.handleClickOutside = () => console.log('test')
+  return (
+    <Grid.Column
+      className='left'>
+      <AccountPane/>
+      <Lists/>
+    </Grid.Column>
+  )
+}
+
+// @ts-ignore
+const clickOutsideConfig = { handleClickOutside: () => ColumnLeft.handleClickOutside }
+
+ColumnLeft =  onClickOutside(ColumnLeft, clickOutsideConfig);
 
 function TickTick(props) {
   const {menuOpen} = props;
@@ -18,11 +36,12 @@ function TickTick(props) {
   return (
     <Wrapper menuOpen={menuOpen}>
       <Grid columns={3}>
-        <Grid.Column
-          className='left'>
-          <AccountPane/>
-          <Lists/>
-        </Grid.Column>
+        {/*<Grid.Column*/}
+          {/*className='left'>*/}
+          {/*<AccountPane/>*/}
+          {/*<Lists/>*/}
+        {/*</Grid.Column>*/}
+        <ColumnLeft/>
 
         <Grid.Column className='center'>
           <TaskListHeader/>

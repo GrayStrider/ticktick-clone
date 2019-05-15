@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import * as React from 'react'
+import  { useState } from "react";
+
 import onClickOutside from "react-onclickoutside";
 
 const MenuClickOutside = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  // @ts-ignore
   MenuClickOutside.handleClickOutside = () => setIsOpen(false);
   return (
     <button type='button' onClick={toggle}>
@@ -12,7 +15,9 @@ const MenuClickOutside = () => {
   )
 };
 
+// @ts-ignore
 const clickOutsideConfig = {
+  // @ts-ignore
   handleClickOutside: () => MenuClickOutside.handleClickOutside
 };
 
