@@ -2,17 +2,18 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     .row {
-    padding: 5px;
+    display: flex;
+    align-items: center;
     
-    * {
-      vertical-align: middle;
+    padding: 0.5em;
+    
+    .buttons {
+      margin-left: auto;
     }
     
-    & .icon {
-      float: right;
-      margin-left: 12px;
-      margin-top: 3px;
-      
+    .icon {
+      margin-left: 0.5em;
     }
+    
   }
 `;
