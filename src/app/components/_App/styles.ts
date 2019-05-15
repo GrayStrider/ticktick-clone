@@ -45,11 +45,12 @@ export const Wrapper = styled.div`
     background: black;
   }
 
-  @media screen and (max-width: 40em) {
+  @media screen and (max-width: 900px) {
     .column {
       &.left {
         position: fixed !important;
         width: 40% !important;
+        left: -40%;
 
       }
       
@@ -62,11 +63,12 @@ export const Wrapper = styled.div`
       }
     }
   }
-  @media screen and (max-width: 30em) {
+  @media screen and (max-width: 600px) {
   
     .column {
       &.left {
         width: 60% !important;
+        left: -60%;
 
       }
       
