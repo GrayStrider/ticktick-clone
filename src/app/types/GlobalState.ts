@@ -31,5 +31,6 @@ export interface GlobalState {
     }
     selectedTab: ETabs
     selectedTask: TTaskID | null
+    menuOpen: boolean
   },
 }

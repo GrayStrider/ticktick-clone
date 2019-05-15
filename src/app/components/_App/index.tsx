@@ -13,9 +13,10 @@ import { ping } from 'app/actions/pingPong';
 import { throttle } from 'lodash';
 
 function TickTick(props) {
+  const {menuOpen} = props;
 
   return (
-    <Wrapper>
+    <Wrapper menuOpen={menuOpen}>
       <Grid columns={3}>
         <Grid.Column
           className='left'>
@@ -41,4 +42,8 @@ function TickTick(props) {
 const dispatchProps = {
 };
 
-export default connect(null, dispatchProps)(TickTick);
+const mapStateToProps = (state, props) => ({
+  menuOpen: state.ticktick.ui.menuOpen
+});
+
+export default connect(mapStateToProps, dispatchProps)(TickTick);

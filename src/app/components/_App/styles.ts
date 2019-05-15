@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{menuOpen: boolean}>`
   width: 100%;
   background-color: black;
   display: flex;
@@ -50,7 +50,7 @@ export const Wrapper = styled.div`
       &.left {
         position: fixed !important;
         width: 40% !important;
-        left: -40%;
+        left: ${p => p.menuOpen ? 0 : '-40%'};
 
       }
       
