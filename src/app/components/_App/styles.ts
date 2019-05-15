@@ -55,6 +55,9 @@ export const Wrapper = styled.div`
       }
       
       &.center {
+      * .bars {
+      display: inline !important;
+         }
       
       }
       
@@ -74,6 +77,7 @@ export const Wrapper = styled.div`
       
       &.center {
          width: 100% !important;
+
       }
       
       &.right {

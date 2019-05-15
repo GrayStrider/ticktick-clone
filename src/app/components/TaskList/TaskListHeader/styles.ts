@@ -10,5 +10,9 @@ export const Wrapper = styled.span`
     margin: 0;
     flex: auto;
   }
+  
+  .bars {
+    display: none;
+  }
   ;
 `;

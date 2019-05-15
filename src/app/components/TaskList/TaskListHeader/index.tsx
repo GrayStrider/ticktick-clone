@@ -33,6 +33,7 @@ function TaskListHeader(props) {
 
   return (
     <Wrapper>
+      <Icon name='bars'/>
       <Header inverted>{selectedList.name}</Header>
       <SDropdown
         icon={null}
