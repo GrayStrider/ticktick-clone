@@ -87,19 +87,4 @@ export const Wrapper = styled.div`
     display: flex !important;
     justify-content: space-evenly;
   }
-  
-  .account_pane {
-    padding: 5px;
-    
-    * {
-      vertical-align: middle;
-    }
-    
-    & .icon {
-      float: right;
-      margin-left: 12px;
-      margin-top: 3px;
-      
-    }
-  }
 `;

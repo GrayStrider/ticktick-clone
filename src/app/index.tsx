@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, Switch } from 'react-router';
-import TickTick from 'app/components/App/index.tsx'
+import TickTick from 'app/components/_App/index.tsx'
 import { hot } from 'react-hot-loader';
 import GlobalStyle from 'app/global-styles';
 import styled from 'styled-components';

@@ -6,7 +6,6 @@ export const initialState = {
   defaultStateEntry: 1
 }
 
-/* eslint-disable default-case, no-param-reassign */
 const defaultReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {

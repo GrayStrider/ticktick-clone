@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { Wrapper } from './styles';
 
 function NewComponent(props) {
-  const {defaultState} = props
+  const {} = props
   return (
     <Wrapper>
     </Wrapper>
