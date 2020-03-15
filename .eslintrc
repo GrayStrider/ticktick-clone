@@ -1,0 +1,1 @@
+extends: "@strider/utils-ts/.eslintrc"

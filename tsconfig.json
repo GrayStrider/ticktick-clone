@@ -1,0 +1,57 @@
+{
+  "include": [
+    "app/**/*",
+    "internals/templates/**/*"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "app/*"
+      ],
+      "@internals": [
+        "internals"
+      ],
+      "app/*": [
+        "app/*"
+      ],
+      "internals/*": [
+        "internals/*"
+      ]
+    },
+    "incremental": true,
+    //    "noEmit": true, // Option 'noEmit' cannot be specified with option 'incremental'.
+    "target": "esnext",
+    "module": "esnext",
+    //commonjs destroys 'dynamic imports' which is used for code splitting
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "jsx": "react",
+    // process JSX
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "allowSyntheticDefaultImports": true,
+    // no errors with commonjs modules interop
+    "esModuleInterop": true,
+    "allowJs": false,
+    // include js files
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": false,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "pretty": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "downlevelIteration": true
+  }
+}

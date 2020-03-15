@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - 'dev'
+    tags-ignore:
+      - dependencies
+  pull_request:
+    branches:
+      - 'dev'
+
+jobs:
+  build:
+    timeout-minutes: 6
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: install
+        run: yarn install
+      - name: test
+        run: yarn test:all
+
+        env:
+          CI: true
